@@ -55,14 +55,16 @@ ggplot(df, aes(lubridate::month(df$month, label = TRUE, abbr = TRUE),hour, fill=
   scale_fill_gradient(low="white", high="red")
 ```
 ```{r}
-p <-ggplot(df,aes(day,hour,fill=pm2.5))+
-  geom_tile(color= "white",size=0.1) + 
-  scale_fill_viridis(name="Hrly Temps C",option ="C")
+p <- df %>% filter(year=2014) %>% 
+  ggplot(aes(day,hour,fill=pm2.5))+
+  geom_tile(color= "white",size=0.1) 
 p <-p + facet_grid(year~month)
 p <-p + scale_y_continuous(trans = "reverse", breaks = unique(df$hour))
 p <-p + scale_x_continuous(breaks =c(1,10,20,31))
 p <-p + theme_minimal(base_size = 8)
 p <-p + labs(title= "Hourly pm2.5", x="Day", y="Hour Commencing")
 p <-p + theme(legend.position = "bottom")
+
+p
 ```
 

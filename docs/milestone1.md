@@ -19,6 +19,8 @@ Previous studies showed that __meteorological conditions__, such as wind and hum
 ### Data Description  
 The [dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#) used in our project was obtained from University of California Irvine Machine learning Repository. It was originally uploaded by Songxi Chen in Peking University, China. It is an hourly dataset containing 1) the __[PM2.5]__ of US Embassy in Beijing and 2) __meteorological statistics__ from Beijing Capital International Airport. The data was collected from Jan 1st, 2010 to Dec 31st, 2014. The original purpose of the dataset was to assess the effect of Chinese government’s pollution reduction plan which started from 2012.    
 
+The dataset can be downloaded [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv)
+
 Below are the variables in the dataset:    
 
 | Variable          | Type             | Description | 
@@ -39,11 +41,75 @@ Below are the variables in the dataset:
 ### Dataset loading
 
 
+```r
+df<-read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv")
+```
+
+
+```r
+sum(is.na(df$pm2.5))/length(df$pm2.5)
+```
+
+```
+## [1] 0.04716594
+```
+
+So, there are 4.73% missing values in the pm2.5 variable, which shows the data quality is reasonably good. We generated a new dataset for some plots by omitting the missing values.
+
+
+```r
+df_clean<- na.omit(df)
+```
 
 ### Dataset exploration   
-1.	We are interested in the correlation between meteorological conditions (dew point, temperature and pressure) and [PM2.5]. Thus, we created a __scatterplot__ of _[FILL HERE: a meteorological condition] VS. [PM2.5]_.
-2.	Wind is one of the important elements of weather conditions, and could also influence the formation of PM2.5. Therefore, we used a __faceted scatterplot__ in order to check the correlation between _wind speed and [PM2.5] for different wind directions_ (northwest, northeast, southwest and southeast).
-3.	In addition to meteorological conditions, we are curious about the potential influence of _time on [PM2.5]_, so we created a __heat map__ showing [PM2.5] in different hours and months. 
+1.	We are interested in the correlation between meteorological conditions (dew point, temperature and pressure) and [PM2.5]. Thus, we created a __correllogram__ of _[DEWP], [TEMP], [PRES], and [PM2.5]_.
+
+The graph shows that there each of _[DEWP], [TEMP], [PRES]_ cound hardly predict _[PM2.5]_.
+
+
+```r
+df_corr<-cor(df_clean[6:9]) %>% # get the correlation of the four columns DEWP, TEMP, PRES, and PM2.5 against each other.
+  round(2)
+
+corrplot(df_corr,
+         type = "upper",
+         method = "color",
+         addCoef.col = "black",
+         diag = FALSE)
+```
+
+![](milestone1_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+
+2.	Wind is one of the important elements of weather conditions, and could also influence the formation of PM2.5. Therefore, we used a __faceted histogram__ in order to check the distribution of __`PM2.5`__ under different wind directions (northwest, northeast, southwest and southeast).
+
+
+
+
+3.	In addition to meteorological conditions, we are curious about the potential influence of _time on [PM2.5]_, so we created a __heat map__ showing [PM2.5] in different hours and months in the year of 2013 and 2014. 
+
+```r
+# We adopted the code from the following GitHub gist
+# Title: HeatmapHrByDay.R
+# Author:  John MacKintosh
+# Date: Dec 15, 2016
+# Availability: https://gist.github.com/johnmackintosh/520643a1f82a0c7df00cf949ba98a4e9#file-heatmaphrbyday-r
+
+p <- df %>% filter(year>=2013) %>% 
+  ggplot(aes(day,hour,fill=pm2.5))+
+  geom_tile(color= "white",size=0.1) +
+  scale_fill_viridis(name="Hourly pm2.5", direction = -1)+ #Sets the order of colours in the scale reverse
+  facet_grid(year~month)+
+  scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
+  scale_x_continuous(breaks =c(1,10,20,31))+
+  theme_minimal(base_size = 8)+
+  labs(title= "Hourly pm2.5", x="Day", y="Hour")+
+  theme(legend.position = "bottom")
+
+p
+```
+
+![](milestone1_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+
 4.	We also create a __histogram__ emphasizing the severity of _PM2.5 in different seasons_.
 5.	In order to check the effect of PM2.5 reduction plan initiated by Chinese government in 2012, we generated a __line chart__ showing _how PM2.5 changes across years_.
 

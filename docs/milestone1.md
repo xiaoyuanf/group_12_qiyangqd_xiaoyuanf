@@ -45,11 +45,11 @@ df<-read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PR
 
 
 ```r
-sum(is.na(df$PM2.5))/length(df$PM2.5)
+sum(is.na(df$pm2.5))/length(df$pm2.5)
 ```
 
 ```
-## [1] NaN
+## [1] 0.04716594
 ```
 
 So there are 4.73% missing values in the `PM2.5` variable, which shows the data quality is reasonably good. We generated a new dataset for some plots by omitting the missing values.

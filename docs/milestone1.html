@@ -468,8 +468,8 @@ Previous studies showed that <strong>meteorological conditions</strong>, such as
 <div id="dataset-loading" class="section level3">
 <h3>Dataset loading</h3>
 <pre class="r"><code>df&lt;-read.csv(&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv&quot;)</code></pre>
-<pre class="r"><code>sum(is.na(df$PM2.5))/length(df$PM2.5)</code></pre>
-<pre><code>## [1] NaN</code></pre>
+<pre class="r"><code>sum(is.na(df$pm2.5))/length(df$pm2.5)</code></pre>
+<pre><code>## [1] 0.04716594</code></pre>
 <p>So there are 4.73% missing values in the <code>PM2.5</code> variable, which shows the data quality is reasonably good. We generated a new dataset for some plots by omitting the missing values.</p>
 <pre class="r"><code>df_clean&lt;- na.omit(df)</code></pre>
 </div>

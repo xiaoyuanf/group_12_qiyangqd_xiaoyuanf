@@ -5,7 +5,7 @@ This is the project repository for Group 12 in STAT547M in University of British
 Margot Chen, Qi Yang
 
 ## Links to milestones
-The links below will update through the course. A release will be created when a milestone is completed. 
+The links below will update through the course. A release will be tagged when a milestone is completed. 
 
 __Milestone 1:__ The HTML version of the project proposal can be found [here](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/milestone1.html)    
 __Milestone 2:__   

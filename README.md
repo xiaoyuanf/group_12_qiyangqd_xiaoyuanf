@@ -14,8 +14,8 @@ The [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PR
 We are trying to address whether Beijing's `PM2.5` is correlated with meteorological conditions(dew point, temperature, pressure, wind speed and direction, rain or snow) and time(year, month, day). Our steps include: data cleaning, correlation tests, linear regression analyses, plotting, dashboard creation. A more detailed proposal in HTML version can be found [here](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/milestone1.html).  
 
 ## Links to Milestones
-The links below lead to the releases of milestones in this project, and they will be updated through the course.
-__Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0)
+The links below lead to the releases of milestones in this project, and they will be updated through the course.       
+__Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0)        
 __Milestone 2:__   
 __Milestone 3:__   
 __Milestone 4:__   

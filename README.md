@@ -21,3 +21,10 @@ __Milestone 3:__
 __Milestone 4:__   
 __Milestone 5:__   
 __Milestone 6:__   
+
+## Repository Component
+__docs__: .Rmd, .html and.md files, including a proposal and a final report.     
+__data__: Raw and cleaned/wrangled datasets.        
+__scripts__: Scripts for different usage.      
+__images__: Images exported from scripts.     
+__tests__: Tests for functions.   

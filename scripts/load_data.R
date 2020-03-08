@@ -7,16 +7,17 @@ Usage: load_data.R --data_url=<load_data_url>
 "-> doc
 
 # Load packages
-library(docopt)
-library(tidyverse)
+suppressMessages(library(tidyverse))
+suppressMessages(library(docopt))
+suppressMessages(library(here))
 
 opt <- docopt(doc)
 
 # Load raw dataset from its URL and write to the "scripts" folder
 main <- function(data_url){
   df<-read.csv(url(data_url))
-  write.csv(df, data/raw_data.csv))  
-  print("The dataset has been loaded")
+  write.csv(df, here("data", "raw_data.csv"))
+  print("The dataset has been loaded!")
 }
 
 #' @df df is the dataset read in

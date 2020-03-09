@@ -1,1 +1,2 @@
-This file is created for opening the scripts folder.
+# Scripts
+This folder holds the scripts written for this project.

@@ -1,1 +1,2 @@
-This file is created for opening the data folder.
+# Data
+This file holds the data needed for this project.

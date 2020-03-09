@@ -14,6 +14,7 @@ suppressMessages(library(here))
 suppressMessages(library(ggplot2))
 suppressMessages(library(corrplot))
 suppressMessages(library(viridis))
+suppressMessages(library(glue))
 
 opt <- docopt(doc)
 
@@ -27,22 +28,23 @@ main <- function(image_path){
   # 1.Correllogram: `DEWP`, `TEMP`, `PRES`, and `PM2.5`.
   df_corr<-cor(df_clean[6:9]) %>% # get the correlation of the four columns DEWP, TEMP, PRES, and PM2.5 against each other.
     round(2)
+  # corrplot is in base R, can't use ggsave
+  png(here(glue(image_path, "/corr.png")))
   
   corr<-corrplot(df_corr,
            type = "upper",
            method = "color",
            addCoef.col = "black",
            diag = FALSE)
-  
-  ggsave(plot = corr, filename = "corr.png", path = image_path)
-  
+  dev.off()
+
   # 2.Faceted histogram: distribution of [PM2.5] in different wind directions.
   facted_hist <- df_clean %>% ggplot(aes(pm2.5))+
     geom_histogram()+
     facet_wrap(~cbwd)+
     theme_bw()
   
-  ggsave(plot = facted_hist, filename = "facted_hist.png", path = image_path)
+  ggsave(plot = facted_hist, filename = "facted_hist.png", path = here(image_path))
   
   # 3.Heat map: hourly [PM2.5] from 2013 to 2014. 
   heat_map <- df %>% filter(year>=2013) %>% 
@@ -56,29 +58,29 @@ main <- function(image_path){
     labs(title= "Hourly PM2.5", x="Day", y="Hour")+
     theme(legend.position = "bottom")
   
-  ggsave(plot = hea_tmap, filename = "heatmap.png", path = image_path)
+  ggsave(plot = heat_map, filename = "heatmap.png", path = here(image_path))
   
   # 4.Bar chart: season VS. PM2.5
   ## add "season" to df_clean
-  df_bar <- df_clean %>% 
+  df_bar <- df_clean %>%
     mutate(season = case_when(month == 12 ~ 'Winter', month >= 9 ~ 'Autumn', month >= 6 ~ 'Summer', month >= 3 ~ 'Spring',TRUE ~ 'Winter'))  # Group dates to seasons
   ## calculate the mean [PM2.5] for each season
   df_bar = aggregate(df_bar$pm2.5,
                       by = list(df_bar$season),
-                      FUN = mean) 
+                      FUN = mean)
   ## rename season and PM2.5 column
-  df_bar = rename(df_bar, c("season" = "Group.1", "PM2.5" = "x")) 
+  df_bar = rename(df_bar, c("season" = "Group.1", "PM2.5" = "x"))
   ## reorder the season
   df_bar$season = factor(df_bar$season, levels = c("Spring", "Summer", "Autumn", "Winter"))
   ## plotting
   season_PM2.5 <- ggplot(data = df_bar, aes(x=season, y = PM2.5)) +
       geom_bar(stat="identity")+
       coord_cartesian(ylim=c(80,120))+ # limite the range of [PM2.5]
-      labs(x = "Season", 
+      labs(x = "Season",
            y = "[PM2.5]",
            title = "PM2.5 VS Season")+
       theme_classic()
-    ggsave(plot = season_PM2.5, filename = "season_PM2.5.png", path = image_path)
+    ggsave(plot = season_PM2.5, filename = "season_PM2.5.png", path = here(image_path))
 
   # 5.Line chart: year VS. PM2.5
   ## add "date" column
@@ -92,18 +94,18 @@ main <- function(image_path){
     df_year_change = rename(df_year_change, c("date" = "Group.1", "PM2.5"="x"))
   ## plotting
     year_PM2.5 = ggplot(data = df_year_change) +
-        geom_line(aes(x=date, y=PM2.5), 
+        geom_line(aes(x=date, y=PM2.5),
                   alpha = 0.6,
                   size = 0.6) +
       geom_vline(xintercept = as.numeric(as.Date("2013-09-01")), linetype=4, color = "blue", size = 1) +
     # add a vertical line showing the time when Chinese overnment launched the plan to control PM2.5
-        labs(x = "Time", 
+        labs(x = "Time",
              y = "[PM2.5]",
              title = "[PM2.5] VS Time") +
         theme_classic()
-    ggsave(plot = year_PM2.5, filename = "year_PM2.5.png", width=12, height=4, path = image_path)
-    
-    
+    ggsave(plot = year_PM2.5, filename = "year_PM2.5.png", width=12, height=4, path = here(image_path))
+
+
     
   # message for users
   print("EDA has run successfully!")

@@ -13,11 +13,11 @@ output:
 
 ## Beijing PM2.5   
 ### Introduction  
-Beijing, the capital city of China, is fighting against `PM2.5` pollution in recent years. `PM2.5` refers to fine airborne particles with a diameter of 2.5μm or less. They can cause severe damage to human health by triggering lung cancer, heart diseases, stroke, and respiratory infections. A Nature study pointed out that in 2016 only, `PM2.5` was associated with over four million deaths worldwide. In the past decades, the air quality in Beijing has been faced with great pressure resulting from the rapid development of industry. In order to secure its citizens’ health, Chinese government has taken action to mitigate the influence of `PM2.5` since 2012.      
+Beijing, the capital city of China, is fighting against `PM2.5` pollution in recent years. `PM2.5` refers to fine airborne particles with a diameter of 2.5μm or less. They can cause severe damage to human health by triggering lung cancer, heart diseases, stroke, and respiratory infections. A Nature study pointed out that in 2016 only, `PM2.5` was associated with over four million deaths worldwide. In the past decades, the air quality in Beijing has been faced with great pressure resulting from the rapid development of industry. In order to secure its citizens’ health, Chinese government has taken action to mitigate the influence of `PM2.5` since September, 2013.      
 Previous studies showed that __meteorological conditions__, such as wind and humidity, could contribute to the formation of `PM2.5`. Therefore, we speculate that there could be correlations between Beijing’s `PM2.5` concentration and the meteorological conditions in a sufficient period of time. If so, knowing the meteorological conditions can support the assessment and even prediction of air quality in Beijing. 
  
 ### Data Description  
-The [dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#) used in our project was obtained from University of California Irvine Machine learning Repository. It was originally uploaded by Songxi Chen in Peking University, China. This is an hourly dataset containing 1) the `PM2.5` of US Embassy in Beijing and 2) __meteorological statistics__ from Beijing Capital International Airport. The data was collected from Jan 1st, 2010 to Dec 31st, 2014. The original purpose of the dataset was to assess the effect of Chinese government’s pollution reduction plan which started from 2012. The dataset can be downloaded [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv).     
+The [dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#) used in our project was obtained from University of California Irvine Machine learning Repository. It was originally uploaded by Songxi Chen in Peking University, China. This is an hourly dataset containing 1) the `PM2.5` of US Embassy in Beijing and 2) __meteorological statistics__ from Beijing Capital International Airport. The data was collected from Jan 1st, 2010 to Dec 31st, 2014. The original purpose of the dataset was to assess the effect of Chinese government’s pollution reduction plan which started from September in 2013. The dataset can be downloaded [here](https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv).     
 
 Below are the variables in the dataset:    
 
@@ -27,7 +27,7 @@ Below are the variables in the dataset:
 | month             | Quantitative     |Month of data in this row|
 | day               | Quantitative     |Day of data in this row|
 | hour              | Quantitative     |Hour of data in this row|
-| `PM2.5`             | Quantitative     |`PM2.5` concentration (ug/m^3)|
+| `PM2.5`           | Quantitative     |`PM2.5` concentration (ug/m^3)|
 | DEWP              | Quantitative     |Dew Point (â„ƒ)|
 | TEMP              | Quantitative     |Temperature (â„ƒ)|
 | PRES              | Quantitative     |Pressure (hPa)|
@@ -138,7 +138,7 @@ df_hist = rename(df_hist, c("season" = "Group.1", "PM2.5" = "x"))
 
 ![](milestone1_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
-5.	In order to check the effect of `PM2.5` reduction plan initiated by Chinese government in 2012, we generated a __line chart__ showing how `PM2.5` changes across time. The `PM2.5` concentration seems to fluctuate, and there is no significant drop from 2010 to 2014.     
+5.	In order to check the effect of `PM2.5` reduction plan initiated by Chinese government in September, 2013, we generated a __line chart__ showing how `PM2.5` changes across time. The `PM2.5` concentration seems to fluctuate, and there is no significant drop from 2010 to 2014.     
 
 
 ```r
@@ -152,6 +152,7 @@ df_year_change = rename(df_year_change, c("date" = "Group.1", "PM2.5"="x"))
   geom_line(aes(x=date, y=PM2.5), 
             alpha = 0.6,
             size = 0.6) +
+  geom_vline(xintercept = as.numeric(as.Date("2013-09-01")), linetype=4, color = "blue", size = 1)+
   labs(x = "Time", 
        y = "[PM2.5]",
        title = "[PM2.5] VS Time") +
@@ -159,6 +160,14 @@ df_year_change = rename(df_year_change, c("date" = "Group.1", "PM2.5"="x"))
 ```
 
 ![](milestone1_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+
+```r
+?geom_vline
+```
+
+```
+## starting httpd help server ... done
+```
 
 ### Research Question    
 Our main research question is an _exploratory_ question: does the `PM2.5` in Beijing correlates with meteorological conditions and time? Sub-questions as below are also _exploratory_ as they all focus on the correlation between `PM2.5` and a certain variable.    

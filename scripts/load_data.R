@@ -1,4 +1,4 @@
-# author: Group 12(Margot Chen, Qi Yang)
+# author: Qi Yang
 # date: 2020-03-05
 
 "This script loads in the dataset for the project Beijing PM2.5.

@@ -12,6 +12,8 @@ suppressMessages(library(tidyverse))
 suppressMessages(library(docopt))
 suppressMessages(library(here))
 suppressMessages(library(ggplot2))
+suppressMessages(library(corrplot))
+suppressMessages(library(viridis))
 
 opt <- docopt(doc)
 
@@ -19,19 +21,42 @@ opt <- docopt(doc)
 main <- function(image_path){
   
   # read in the dataset
-  df_clean <- na.omit(read.csv(here("data", "cleaned_data.csv")))
+  df <- read.csv(here("data", "raw_data.csv")) # some plots need NAs
+  df_clean <- read.csv(here("data", "cleaned_data.csv"))
   
   # 1.Correllogram: `DEWP`, `TEMP`, `PRES`, and `PM2.5`.
+  df_corr<-cor(df_clean[6:9]) %>% # get the correlation of the four columns DEWP, TEMP, PRES, and PM2.5 against each other.
+    round(2)
   
+  corr<-corrplot(df_corr,
+           type = "upper",
+           method = "color",
+           addCoef.col = "black",
+           diag = FALSE)
   
+  ggsave(plot = corr, filename = "corr.png", path = image_path)
   
   # 2.Faceted histogram: distribution of [PM2.5] in different wind directions.
+  facted_hist <- df_clean %>% ggplot(aes(pm2.5))+
+    geom_histogram()+
+    facet_wrap(~cbwd)+
+    theme_bw()
   
-  
+  ggsave(plot = facted_hist, filename = "facted_hist.png", path = image_path)
   
   # 3.Heat map: hourly [PM2.5] from 2013 to 2014. 
+  heat_map <- df %>% filter(year>=2013) %>% 
+    ggplot(aes(day,hour,fill=pm2.5))+
+    geom_tile(color= "white",size=0.1) +
+    scale_fill_viridis(name="Hourly PM2.5", direction = -1)+ #Sets the order of colours in the scale reverse
+    facet_grid(year~month)+
+    scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
+    scale_x_continuous(breaks =c(1,10,20,31))+
+    theme_minimal(base_size = 8)+
+    labs(title= "Hourly PM2.5", x="Day", y="Hour")+
+    theme(legend.position = "bottom")
   
-  
+  ggsave(plot = hea_tmap, filename = "heatmap.png", path = image_path)
   
   # 4.Bar chart: season VS. PM2.5
   ## add "season" to df_clean

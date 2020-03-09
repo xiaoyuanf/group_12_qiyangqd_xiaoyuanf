@@ -1,10 +1,10 @@
-# author: Group 12(Margot Chen, Qi Yang)
+# author: Qi Yang, Margot Chen
 # date: 2020-03-05
 
 "This script carries out the exploration data analysis (EDA) for the project Beijing PM2.5. 
 It produces five plots: 1) 2) 3) 4) Season VS. [PM2.5] and 5)Year VS. [PM2.5].
 
-Usage: load_data.R --image_path=<image_path>
+Usage: eda.R --image_path=<image_path>
 "-> doc
 
 # Load packages
@@ -19,7 +19,7 @@ opt <- docopt(doc)
 main <- function(image_path){
   
   # read in the dataset
-  df_clean <- na.omit(read.csv(here("data", "raw_data.csv"))) # should be replaced by "clean_data"
+  df_clean <- na.omit(read.csv(here("data", "cleaned_data.csv")))
   
   # 1.Correllogram: `DEWP`, `TEMP`, `PRES`, and `PM2.5`.
   
@@ -87,8 +87,6 @@ main <- function(image_path){
 
 #' @param image_path is the full path name to the folder where users would like to save the images. 
 #' "images" would be a good choice.
-#' 
-
 
 # Tests
 main(opt$image_path)

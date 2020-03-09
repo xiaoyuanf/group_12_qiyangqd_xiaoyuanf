@@ -34,7 +34,7 @@ Below are the variables in the dataset:
 | month             | Quantitative     |Month of data in this row|
 | day               | Quantitative     |Day of data in this row|
 | hour              | Quantitative     |Hour of data in this row|
-| `PM2.5`             | Quantitative     |`PM2.5` concentration (ug/m^3)|
+| `PM2.5`           | Quantitative     |`PM2.5` concentration (ug/m^3)|
 | DEWP              | Quantitative     |Dew Point (â„ƒ)|
 | TEMP              | Quantitative     |Temperature (â„ƒ)|
 | PRES              | Quantitative     |Pressure (hPa)|

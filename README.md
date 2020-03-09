@@ -15,8 +15,8 @@ The [dataset](https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PR
 We are trying to address whether Beijing's `PM2.5` is correlated with meteorological conditions(dew point, temperature, pressure, wind speed and direction, rain or snow) and time(year, month, day). Our steps include: data cleaning, correlation tests, linear regression analyses, plotting, dashboard creation. A more detailed proposal in HTML version can be found [here](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/milestone1.html).  
 
 ## Links to Milestones
-The links below lead to the releases of milestones in this project, and they will be updated through the course.          
-__Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0)        
+The links below lead to the releases and `html` versions of milestones in this project, and they will be updated through the course.          
+__Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0) [html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/milestone1.html)        
 __Milestone 2:__   
 __Milestone 3:__   
 __Milestone 4:__   
@@ -48,14 +48,14 @@ __tests__: Tests for functions.
 
 3. Run the following scripts (in order) with specified arguments.
 
-  - Download the raw data
+  - Download the raw data     
   `Rscript scripts/load_data.R --data_url=<load_data_url>`
   
-  - Wrangle/clean/process the raw data 
+  - Wrangle/clean/process the raw data      
   `Rscript scripts/data_wrangle.R --path=<path> --filename=<filename>`
   
-  - EDA script to export images
+  - EDA script to export images         
   `Rscript scripts/eda.R --image_path=<image_path>`
   
-  - Knit the draft final report
+  - Knit the draft final report              
   Will be added next week

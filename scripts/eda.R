@@ -4,7 +4,7 @@
 "This script carries out the exploration data analysis (EDA) for the project Beijing pm2.5. 
 It produces five plots: 1) 2) 3) 4) Season VS. [pm2.5] and 5)Year VS. [pm2.5].
 
-Usage: eda.R --image_path=<image_path>
+Usage: eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>
 "-> doc
 
 # Load packages
@@ -19,11 +19,11 @@ suppressMessages(library(glue))
 opt <- docopt(doc)
 
 # Main function
-main <- function(image_path){
+main <- function(raw_path, clean_path, image_path){
   
   # read in the dataset
-  df <- read.csv(here("data", "raw_data.csv")) # some plots need NAs
-  df_clean <- read.csv(here("data", "cleaned_data.csv"))
+  df <- read.csv(here(raw_path)) # some plots need NAs
+  df_clean <- read.csv(here(clean_path))
   
   # 1.Correllogram: `DEWP`, `TEMP`, `PRES`, and `pm2.5`.
   df_corr<-cor(df_clean[6:9]) %>% # get the correlation of the four columns DEWP, TEMP, PRES, and pm2.5 against each other.
@@ -110,10 +110,11 @@ main <- function(image_path){
   # message for users
   print("EDA has run successfully!")
 }
-
-
+#' @param raw_path is the full path to the raw data file.
+#' 
+#' @param clean_path is the full path to the cleaned data file.
+#' 
 #' @param image_path is the full path name to the folder where users would like to save the images. 
-#' "images" would be a good choice.
 
 # Tests
-main(opt$image_path)
+main(opt$raw_path, opt$clean_path, opt$image_path)

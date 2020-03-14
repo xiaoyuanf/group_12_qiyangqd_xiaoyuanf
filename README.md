@@ -48,14 +48,14 @@ __tests__: Tests for functions.
 
 3. Run the following scripts (in order) with specified arguments.
 
-  - Download the raw data     
-  `Rscript scripts/load_data.R --data_url=<load_data_url>`
+  - Download the raw data. The data will be saved as `data/raw_data.csv`.  
+  `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
   
   - Wrangle/clean/process the raw data      
-  `Rscript scripts/data_wrangle.R --path=<path> --filename=<filename>`
+  `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`
   
   - EDA script to export images         
-  `Rscript scripts/eda.R --image_path=<image_path>`
+  `Rscript scripts/eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>`
   
   - Knit the draft final report              
   Will be added next week

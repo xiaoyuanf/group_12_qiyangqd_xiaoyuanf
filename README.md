@@ -17,7 +17,7 @@ We are trying to address whether Beijing's `PM2.5` is correlated with meteorolog
 ## Links to Milestones
 The links below lead to the releases and `html` versions of milestones in this project, and they will be updated through the course.          
 __Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0) [html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/milestone1.html)        
-__Milestone 2:__   
+__Milestone 2:__ [release2.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/2.0)  
 __Milestone 3:__   
 __Milestone 4:__   
 __Milestone 5:__   
@@ -48,14 +48,14 @@ __tests__: Tests for functions.
 
 3. Run the following scripts (in order) with specified arguments.
 
-  - Download the raw data     
-  `Rscript scripts/load_data.R --data_url=<load_data_url>`
+  - Download the raw data. The data will be saved as `data/raw_data.csv`.  
+  `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
   
   - Wrangle/clean/process the raw data      
-  `Rscript scripts/data_wrangle.R --path=<path> --filename=<filename>`
+  `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`
   
   - EDA script to export images         
-  `Rscript scripts/eda.R --image_path=<image_path>`
+  `Rscript scripts/eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>`
   
   - Knit the draft final report              
   Will be added next week

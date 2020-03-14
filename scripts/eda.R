@@ -69,7 +69,7 @@ main <- function(file_path, image_path){
                       by = list(df_bar$season),
                       FUN = mean)
   ## rename season and PM2.5 column
-  df_bar = rename(df_bar, c("season" = "Group.1", "PM2.5" = "x"))
+  names(df_bar) <- c("season", "PM2.5")
   ## reorder the season
   df_bar$season = factor(df_bar$season, levels = c("Spring", "Summer", "Autumn", "Winter"))
   ## plotting
@@ -91,7 +91,7 @@ main <- function(file_path, image_path){
                                by = list(df_year_change$date),
                                FUN = mean) # Mean [PM2.5] of each date
   ## rename date and PM2.5 column
-    df_year_change = rename(df_year_change, c("date" = "Group.1", "PM2.5"="x"))
+    names(df_year_change) <- c("date", "PM2.5")
   ## plotting
     year_PM2.5 = ggplot(data = df_year_change) +
         geom_line(aes(x=date, y=PM2.5),

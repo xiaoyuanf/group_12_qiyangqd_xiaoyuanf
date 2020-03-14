@@ -3,7 +3,7 @@
 
 "This script leletes the first column and NAs of the `raw_data.csv`.
 
-Usage: data_wrangle.R --path=<path> --filename=<filename>
+Usage: data_wrangle.R --raw_path=<raw_path> --clean_name=<clean_name>
 " -> doc
 
 library(tidyverse)
@@ -14,34 +14,32 @@ library(glue)
 # THIS IS NEW
 opt <- docopt(doc)
 
-main <- function(path, filename) {
+main <- function(raw_path, clean_name) {
   
-  df<-read_data(path)
+  df<-read_data(raw_path)
   
   df<-df %>% drop_na() %>% 
     select(2:14) # the raw data duplicates the first column which is row number
   
-  save_data(df, filename)
+  save_data(df, clean_name)
   
-  print(glue("The file ", filename, " is saved in the data folder."))
+  print(glue("The file ", clean_name, " is saved in the data folder."))
 }
 
 
 
-#' @param path indicates where the raw data is. 
+#' @param raw_path indicates where the raw data is (better in the `data` folder). 
 #' @example read_data('data/raw_data.csv')
-#' 
-#' @param filename indicates where the wrangled data should be saved
-#' @example save_data("data_cleaned.csv")
-#' 
-#' 
+#' @param clean_name indicates where the wrangled data should be saved (better in the `data` folder).
+#' @example save_data('data/cleaned_data.csv')
 
-read_data <- function(path) {
-  read.csv(here(path))
+read_data <- function(raw_path) {
+  read.csv(here(raw_path))
 }
 
-save_data <- function(df, filename) {
-  write.csv(df, here("data", filename), row.names=FALSE)
+save_data <- function(df, clean_name) {
+  write.csv(df, here(clean_name), row.names=FALSE)
 }
 
-main(opt$path, opt$filename)
+# Tests
+main(opt$raw_path, opt$clean_name)

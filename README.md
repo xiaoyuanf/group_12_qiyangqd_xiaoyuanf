@@ -39,8 +39,7 @@ __tests__: Tests for functions.
 
 3. Run the following scripts (in order) with specified arguments.
 
-  - [load_data.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/load_data.R): Load the dataset from an external link and save it.        
-  `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
+  - [load_data.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/load_data.R): Load the dataset from an external link and save it as a .csv file.      `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
   
   - [data_wrangle.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/data_wrangle.R): Clean and process the raw data according to the needs of the project.      
   `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`

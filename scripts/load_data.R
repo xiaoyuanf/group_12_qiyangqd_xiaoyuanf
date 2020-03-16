@@ -2,7 +2,6 @@
 # date: 2020-03-05
 
 "This script loads in the dataset for the project Beijing PM2.5.
-
 Usage: load_data.R --data_url=<load_data_url>
 "-> doc
 

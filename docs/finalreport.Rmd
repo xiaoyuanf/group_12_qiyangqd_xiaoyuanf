@@ -2,10 +2,13 @@
 title: "Final report"
 author: "Margot Chen, Qi Yang"
 date: "2020/3/14"
+
 output: 
+html_document:
   pdf_document:
      latex_engine: lualatex
 always_allow_html: true
+
 ---
 
 ```{r setup, include=FALSE}

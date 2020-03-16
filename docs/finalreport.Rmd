@@ -1,5 +1,5 @@
 ---
-title: "finalreport"
+title: "Final report"
 author: "Margot Chen, Qi Yang"
 date: "2020/3/14"
 output: html_document

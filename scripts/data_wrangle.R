@@ -24,7 +24,7 @@ main <- function(raw_path, clean_path) {
     select(2:14)  # the raw data duplicates the first column which is row number
     
   # Change the names of the wind direction
-  levels(df$cbwd) <- c("Calm and variable", "Northeast", "Southwest", "Southeast") 
+  levels(df$cbwd) <- c("Calm and variable", "Northeast", "Northwest", "Southeast") 
   
   # Save the cleaned data  
   save_data(df, clean_path)

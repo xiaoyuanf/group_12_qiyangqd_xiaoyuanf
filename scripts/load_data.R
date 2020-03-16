@@ -17,7 +17,7 @@ opt <- docopt(doc)
 main <- function(data_url){
   df<-read.csv(url(data_url))
   write.csv(df, here("data", "raw_data.csv"))
-  print("The dataset has been loaded!")
+  print("The dataset has been loaded to the data folder!")
 }
 
 #' @df df is the dataset the script read in.

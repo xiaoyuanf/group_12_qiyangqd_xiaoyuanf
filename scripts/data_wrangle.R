@@ -11,7 +11,6 @@ library(docopt)
 library(here)
 library(glue)
 
-# THIS IS NEW
 opt <- docopt(doc)
 
 main <- function(raw_path, clean_path) {

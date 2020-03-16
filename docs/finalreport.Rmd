@@ -2,7 +2,9 @@
 title: "Final report"
 author: "Margot Chen, Qi Yang"
 date: "2020/3/14"
-output: html_document
+output: 
+  pdf_document:
+     latex_engine: lualatex
 always_allow_html: true
 ---
 
@@ -65,7 +67,7 @@ Our first step was to check if there are correlations between meteorological con
 ### 2.Faceted histogram	   
 
 Next, we used a faceted histogram to check the distribution of `PM2.5` under different wind directions. The Y axis in the image below is the count of a certain PM2.5 concentration, indicating the severity of PM2.5 pollution. Each facet stands for a wind direction*.      
-_*Only northeast, southwest, southeast and calm and variable were recorded as the wind direction in the dataset; northwest was somehow missed._       
+_Only northeast, southwest, southeast and calm and variable were recorded as the wind direction in the dataset; northwest was somehow missed_       
 
 For different wind directions, the range of `PM2.5` concentration is similar, but the absolute and relative frequency of a specific `PM2.5` concentration are different: northwest and southeast tend to have more recordings of low values.
 

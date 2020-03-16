@@ -16,14 +16,21 @@ opt <- docopt(doc)
 
 main <- function(raw_path, clean_path) {
   
+  # Read in the raw data
   df<-read_data(raw_path)
   
+  # Clean out NAs
   df<-df %>% drop_na() %>% 
-    select(2:14) # the raw data duplicates the first column which is row number
+    select(2:14)  # the raw data duplicates the first column which is row number
+    
+  # Change the names of the wind direction
+  levels(df$cbwd) <- c("Calm and variable", "Northeast", "Northwest", "Southeast") 
   
+  # Save the cleaned data  
   save_data(df, clean_path)
   
   print(glue("The file ", clean_path, " is saved in the data folder."))
+
 }
 
 
@@ -36,6 +43,7 @@ main <- function(raw_path, clean_path) {
 #' 
 #' 
 
+
 read_data <- function(raw_path) {
   read.csv(here(raw_path))
 }
@@ -45,3 +53,4 @@ save_data <- function(df, clean_path) {
 }
 
 main(opt$raw_path, opt$clean_path)
+

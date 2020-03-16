@@ -35,13 +35,15 @@ main <- function(raw_path, clean_path, image_path){
            type = "upper",
            method = "color",
            addCoef.col = "black",
-           diag = FALSE)
+           diag = FALSE, 
+           title = "Correlation of [PM2.5] and meteorological conditions")
   dev.off()
 
   # 2.Faceted histogram: distribution of [pm2.5] in different wind directions.
   facted_hist <- df_clean %>% ggplot(aes(pm2.5))+
     geom_histogram()+
     facet_wrap(~cbwd)+
+    labs(title = "PM2.5 pollution for different wind directions", x = "PM2.5")+
     theme_bw()
   
   ggsave(plot = facted_hist, filename = "facted_hist.png", path = here(image_path))
@@ -55,10 +57,10 @@ main <- function(raw_path, clean_path, image_path){
     scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
     scale_x_continuous(breaks =c(1,10,20,31))+
     theme_minimal(base_size = 8)+
-    labs(title= "Hourly pm2.5", x="Day", y="Hour")+
+    labs(title= "Hourly [PM2.5] in 2013 and 2014", x="Day", y="Hour")+
     theme(legend.position = "bottom")
   
-  ggsave(plot = heat_map, filename = "heatmap.png", path = here(image_path))
+  ggsave(plot = heat_map, filename = "heatmap.png", width=12, height=4, path = here(image_path))
   
   # 4.Bar chart: season VS. pm2.5
   ## add "season" to df_clean

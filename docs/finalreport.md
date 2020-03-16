@@ -13,16 +13,7 @@ output:
   always_allow_html: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-library(knitr)
-library(tidyverse)
-library(here)
-library(corrplot)
-library(foreign)
-library(lubridate) # make it easier to parse and manipulate dates
-library(viridis) # colour blind friendly palette
-```
+
 
 # Beijing PM2.5   
 ## Introduction  
@@ -56,11 +47,7 @@ Below are the variables in the dataset:
 | ls                | Quantitative     |Cumulated hours of snow|
 | lr                | Quantitative     |Cumulated hours of rain|
 
-```{r, echo=FALSE}
-# This code chunk is used to generate in-line values and numbers
-df<-read.csv("https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv")
-df_clean<- na.omit(df)
-```
+
 
 ## Exploratory data analysis (EDA)
 ### 1.Correllogram   
@@ -81,13 +68,7 @@ For different wind directions, the range of `PM2.5` concentration is similar, bu
 
 ### 3.Heat map
 
-```{r, echo=FALSE}
-# These two datasets are genaerated to calculate the mean of [PM2.5] before and after the action
-mean_before <- df_clean %>% 
-  filter(year == 2013 & month < 9)
-mean_after<- df_clean %>% 
-  filter(year == 2014 | (year == 2013 & month > 8))
-```
+
 
 In addition to meteorological conditions, we are curious about the correlation between `PM2.5` concentration and time, so we generated a heat map. No significant color differences were found between years (2013 and 2014) or within a day (morning, afternoon and evening). However, the color varies in different months: October to Februrary tend to have more dark colors compared to the other months.      
 
@@ -123,9 +104,9 @@ In addition to the meteorological conditions studied above, wind is also one of 
 
 The weak correlations between `PM2.5` concentration and meteorological conditions in Figure 1 are surprising to us as we suspected that they should be strong. Based on [previous studies](https://www.atmos-chem-phys.net/18/5343/2018/acp-18-5343-2018.pdf), temperature and pressure are positively correlated with `PM2.5` while humidity (dew points in this study) is negatively correlated. This contradictory finding may result from the limitation of `corrplot()`, and further analyses such as t-test are needed to study the correlations.     
 
-Regardless of the wind direction, we found that `PM2.5` concentration ranges from `r min(df_clean$pm2.5)` to `r max(df_clean$pm2.5)` and that during most of the time it is below `r median(df_clean$pm2.5)` (median). However, the severity of `PM2.5` pollution differs across wind directions: when the wind comes from the northwest, the severity seems to be the lowest, as lower PM2.5 concentrations are more likely to occur. In comparison, winds coming from the northeast tend to result in more serious pollution. We find this also surprising, since the northernwest part of China are covered with more sand compared to the northeast, which consists mostly of soil. This might because of the number of recordings (absolute frequency) varies for different wind directions, and more data is needed for further verification of this result.
+Regardless of the wind direction, we found that `PM2.5` concentration ranges from 0 to 994 and that during most of the time it is below 72 (median). However, the severity of `PM2.5` pollution differs across wind directions: when the wind comes from the northwest, the severity seems to be the lowest, as lower PM2.5 concentrations are more likely to occur. In comparison, winds coming from the northeast tend to result in more serious pollution. We find this also surprising, since the northernwest part of China are covered with more sand compared to the northeast, which consists mostly of soil. This might because of the number of recordings (absolute frequency) varies for different wind directions, and more data is needed for further verification of this result.
 
-We attempted to see if there is any decrease in `PM2.5` concentration that could possibly result from a plan of Chinese government that aims to improve the air quality, which started in September in 2013. However, we didn't find differences between 2013 and 2014, though there is a slight drop in the mean of`PM2.5` concentration(before: `r mean(mean_before$pm2.5)`; after: `r mean(mean_after$pm2.5)`). The highest value happened in 2013, which could possibly explain the government's motivation to reduce the pollution, but it is hard to find an observable decrease. This is reasonable since there could be lag for the action to come into effect, and more data after 2014 is needed. 
+We attempted to see if there is any decrease in `PM2.5` concentration that could possibly result from a plan of Chinese government that aims to improve the air quality, which started in September in 2013. However, we didn't find differences between 2013 and 2014, though there is a slight drop in the mean of`PM2.5` concentration(before: 104.1933921; after: 97.4906558). The highest value happened in 2013, which could possibly explain the government's motivation to reduce the pollution, but it is hard to find an observable decrease. This is reasonable since there could be lag for the action to come into effect, and more data after 2014 is needed. 
 
 `PM2.5` pollution is more serious when it enters October and reaches its peak in January/February. It is also worth noticing that the increase between summer and autumn is the largest, suggesting that some conditions changing at this time have greater contribution to the formation of `PM2.5`, such as wind direction, temperature and dew point, though the last two are not found to be correlated strongly with `PM2.5` based on the correlogram. This finding is similar to previous studies that point out that the worst case happens in autumn and winter. It is reasonable when taking the conclusion drawn above about the impact of the wind direction into account: located in the northern part of China, Beijing experiences the wind coming from the north from September to early March, which can result in a more serious pollution. In comparison, the wind comes from the south from late March to August, leading to less formation of `PM2.5` particles, so the air condition is better.      
 

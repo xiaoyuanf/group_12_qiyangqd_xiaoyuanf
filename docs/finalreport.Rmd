@@ -32,7 +32,7 @@ Previous studies showed that meteorological conditions(wind, humidity, etc) coul
 ## Research Question    
 Our main research question is an _exploratory_ question: does the `PM2.5` in Beijing correlates with meteorological conditions and time? We speculate that there is indeed a correlation and that knowing the meteorological conditions can support the assessment and even prediction of air quality in Beijing. Sub-questions are as follows:    
 -	`PM2.5` VS. physical parameters (dew point, temperature and pressure).    
--	`PM2.5` VS. wind.     
+-	`PM2.5` VS. winds.     
 -	`PM2.5` VS. special weather conditions (rain and snow).     
 -	`PM2.5` VS. time (year, month, a time in a day). 
 

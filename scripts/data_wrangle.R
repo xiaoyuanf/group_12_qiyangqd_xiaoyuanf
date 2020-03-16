@@ -1,7 +1,7 @@
 # author: Margot Chen
 # date: 2020-03-08
 
-"This script leletes the first column and NAs of the `raw_data.csv`.
+"This script deletes the first column and NAs of the `raw_data.csv`.
 
 Usage: data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>
 " -> doc

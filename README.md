@@ -30,22 +30,48 @@ __scripts__: `.R` scripts for different usage.
 __images__: Images exported from scripts.     
 __tests__: Tests for functions.  
 
-## Usage
+## Usage   
+
 1. Clone this repo.    
 
 2. Ensure the following packages are installed:       
   
    `dplyr`, `tidyr`, `tidyverse`, `docopt`, `here`, `glue`, `ggplot2`, `corrplot`, `foreign`, `lubridate`, `viridis`                    
 
+### If you are running scripts individually: 
 3. Run the following scripts (in order) with specified arguments.
 
-  - [load_data.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/load_data.R): Load the dataset from an external link and save it as a .csv file.      `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
+  - [load_data.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/load_data.R): Save the raw data as a .csv in the `data` folder from an external URL.      `Rscript scripts/load_data.R --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`
   
-  - [data_wrangle.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/data_wrangle.R): Clean and process the raw data according to the needs of the project.      
+  - [data_wrangle.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/data_wrangle.R): Save a new cleaned dataset as a .csv in the `data` folder.      
   `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`
   
   - [eda.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/eda.R): Run exploratory data analysis.         
   `Rscript scripts/eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>`
   
-  - Knit the draft final report              
-  Will be added next week
+  - [knit.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/knit.R): Knit the final report.              
+  `Rscript scripts/knit.R --rmd_path=<rmd_path>`
+
+### If you are using GNU MAKE:
+
+3. Open the Terminal in your RStudio. Type the following options according to your needs:
+
+- If you want to get all targets:
+  `make all`  
+  
+- If you want to clear all existing targets and recreate them:
+  `make clear`
+  
+- If you want to get individual targets:
+    * Save the raw data as a .csv in the `data` folder from an external URL:
+      `make data/raw_data.csv`    
+  
+    * Save a new cleaned dataset as a .csv in the `data` folder:
+      `make data/cleaned_data.csv`
+      
+    * Run exploratory data analyses:
+      `make  `
+      
+    * Knit the final report:
+      `make  `
+

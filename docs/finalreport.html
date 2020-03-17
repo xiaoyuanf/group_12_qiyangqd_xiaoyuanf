@@ -529,6 +529,18 @@ Previous studies showed that meteorological conditions(wind, humidity, etc) coul
 </div>
 <div id="analysis-methods" class="section level2">
 <h2>Analysis methods</h2>
+<pre class="r"><code>lm &lt;- readRDS(file=here::here(&quot;docs&quot;, &quot;model.rds&quot;))
+tidy(lm)</code></pre>
+<pre><code>## # A tibble: 7 x 5
+##   term        estimate std.error statistic   p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept) 1836.      72.9       25.2   5.25e-139
+## 2 DEWP           4.10     0.0518    79.2   0.       
+## 3 TEMP          -6.29     0.0675   -93.1   0.       
+## 4 PRES          -1.62     0.0712   -22.8   2.52e-114
+## 5 cbwdNE       -28.9      1.45     -20.0   2.78e- 88
+## 6 cbwdNW       -39.9      1.13     -35.1   9.70e-267
+## 7 cbwdSE         0.435    1.10       0.397 6.92e-  1</code></pre>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>

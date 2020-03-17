@@ -22,6 +22,7 @@ library(corrplot)
 library(foreign)
 library(lubridate) # make it easier to parse and manipulate dates
 library(viridis) # colour blind friendly palette
+library(broom)
 ```
 
 # Beijing PM2.5   
@@ -108,6 +109,12 @@ The purpose of the line chart was to show the change of `PM2.5` concentration ac
 ![Figure 5. PM2.5 concentration across years](../images/year_PM2.5.png)
 
 ## Analysis methods
+
+```{r}
+lm <- readRDS(file=here::here("docs", "model.rds"))
+tidy(lm)
+```
+
 
 
 

@@ -74,18 +74,6 @@ __tests__: Tests for functions.
 - If you want to clear all existing targets and recreate them:     
   `make clear`
   
-- If you want to get individual targets:     
 
-    * Save the raw data as a .csv in the `data` folder from an external URL:    
-      `make data/raw_data.csv`     
-  
-    * Save a new cleaned dataset as a .csv in the `data` folder:
-      `make data/cleaned_data.csv`
-      
-    * Run exploratory data analyses:
-      `make images/corr.png`
-      
-    * Knit the final report:
-      `make docs/finalreport.html`
 
 

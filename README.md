@@ -50,8 +50,11 @@ __tests__: Tests for functions.
   - [data_wrangle.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/data_wrangle.R): Save a new cleaned dataset as a .csv in the `data` folder.      
   `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`
   
-  - [eda.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/eda.R): Run exploratory data analysis.         
+  - [eda.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/eda.R): Run exploratory data analysis and save the plots in a user defined location.         
   `Rscript scripts/eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>`
+  
+  - [model.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/model.R): Run a linear regression and save the model in a user defined location.
+  `Rscript scripts/model.R --clean_path=<clean_data_path> --model_path=<model_path>`
   
   - [knit.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/knit.R): Knit the final report.              
   `Rscript scripts/knit.R --rmd_path=<rmd_path>`
@@ -76,7 +79,13 @@ __tests__: Tests for functions.
     * Save the raw data as a .csv in the `data` folder from an external URL:    
       `make data/raw_data.csv`     
   
-    * Save a new cleaned dataset as a .csv in the `data` folder:     
-      `make data/cleaned_data.csv`    
+    * Save a new cleaned dataset as a .csv in the `data` folder:
+      `make data/cleaned_data.csv`
       
+    * Run exploratory data analyses:
+      `make images/corr.png`
+      
+    * Knit the final report:
+      `make docs/finalreport.html`
+
 

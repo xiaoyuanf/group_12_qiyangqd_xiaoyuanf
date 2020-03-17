@@ -54,7 +54,18 @@ head(df_clean)
 ```
 
 ### Dataset exploration   
-.
+```{r}
+class(df_clean$cbwd)
+unique(df_clean$cbwd)
+```
+```{r}
+model4<-lm(pm2.5 ~ DEWP+TEMP+PRES+cbwd, data=df_clean)
+model4
+```
+```{r}
+plot(model4)
+```
+
 
 ```{r}
 index=c(6:9, 11:13)
@@ -80,9 +91,22 @@ model
 model2<-lm(pm2.5 ~ DEWP + TEMP + Iws, data=df_clean)
 model2
 
-model3<-lm(pm2.5 ~ DEWP + TEMP + PRES + Iws, data=df_clean)
-model3
 ```
+
+```{r}
+model3<-lm(pm2.5 ~ DEWP + TEMP + PRES + Iws, data=df_clean)
+plot(model3)
+```
+
+```{r}
+df_clean %>% modelr::data_grid(DEWP)
+```
+
+
+```{r}
+plot(model)
+```
+
 ```{r}
 library(DAAG)
 cv.lm(df_clean, model, m=3) 
@@ -93,7 +117,7 @@ cv.lm(df_clean, model2, m=3)
 ```
 
 ```{r}
-cv.lm(df_clean, model3, m=3) 
+cv.lm(df_clean, model4, m=3) 
 ```
 
 

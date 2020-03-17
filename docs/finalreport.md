@@ -109,12 +109,18 @@ tidy(lm)
 ## 7 cbwdSE         0.435    1.10       0.397 6.92e-  1
 ```
 
+```r
+plot(lm)
+```
+
+![](finalreport_files/figure-html/unnamed-chunk-4-1.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-2.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-3.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
+
+Judging by the plots, we can tell that this model has huge residuals and cannot predict pm2.5 well.
 
 
+## Results (placeholder, will be adjusted later)   
 
-## Results   
-
-In a nutshell, we find that `PM2.5` concentration is more likely to change with time instead of meteorological conditons, which is rather surprising as previous studies have shown correlation between `PM2.5` and weather variables. Our first finding is that the correlations between dew point (DEWP), temperature (TEMP) or pressure (PRES) and `PM2.5`concentration are rather weak (Figure 1), so the meteorological conditions can hardly predict the `PM2.5` concentration.     
+In a nutshell, we find that `PM2.5` concentration is more likely to change with time instead of meteorological conditions, which is rather surprising as previous studies have shown correlation between `PM2.5` and weather variables. Our first finding is that the correlations between dew point (DEWP), temperature (TEMP) or pressure (PRES) and `PM2.5`concentration are rather weak (Figure 1), so the meteorological conditions can hardly predict the `PM2.5` concentration.     
 
 In addition to the meteorological conditions studied above, wind is also one of the important factors that can influence the formation of `PM2.5`. According to Figure 2, `PM2.5` concentration seems to have a similar range for all wind directions; and the pollution is less serious when the wind comes from northwest and southeast.     
 

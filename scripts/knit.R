@@ -15,9 +15,11 @@ opt <- docopt(doc)
 main <- function(rmd_path) {
   rmarkdown::render(rmd_path,
                     c("html_document", "pdf_document"))
-  print("The final report is knitted to the docs folder!")
+  print("The final report is knitted to .html and .pdf documents in the same docs folder as .Rmd.")
 }
 
-#' @param finalreport_path is where the .rmd of final report is. 
+#' @param rmd_path is the path to the .rmd file of the final report. 
+#' The knitted html and pdf will also be in the same folder as the .Rmd file.
+#' @example rmarkdown::render(docs/finalreport.Rmd, c("html_document", "pdf_document"))
 
 main(opt$rmd_path)

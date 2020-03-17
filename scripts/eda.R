@@ -25,6 +25,10 @@ main <- function(raw_path, clean_path, image_path){
   df <- read.csv(here(raw_path)) # some plots need NAs
   df_clean <- read.csv(here(clean_path))
   
+  # correlogram
+  
+  
+  
   # 1.Correllogram: `DEWP`, `TEMP`, `PRES`, and `pm2.5`.
   df_corr<-cor(df_clean[6:9]) %>% # get the correlation of the four columns DEWP, TEMP, PRES, and pm2.5 against each other.
     round(2)
@@ -113,10 +117,13 @@ main <- function(raw_path, clean_path, image_path){
   print("EDA has run successfully!")
 }
 #' @param raw_path is the full path to the raw data file.
+#' @example read.csv(here(data/raw_data.csv))
 #' 
 #' @param clean_path is the full path to the cleaned data file.
+#' @example read.csv(here(data/cleaned_data.csv))
 #' 
 #' @param image_path is the full path name to the folder where users would like to save the images. 
+#' @example ggsave(plot, "filename.png", path = here(images))
 
 # Tests
 main(opt$raw_path, opt$clean_path, opt$image_path)

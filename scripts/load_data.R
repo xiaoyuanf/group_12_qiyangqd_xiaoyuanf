@@ -1,7 +1,7 @@
 # author: Qi Yang
 # date: 2020-03-05
 
-"This script loads in the dataset for the project Beijing PM2.5.
+"This script loads in the raw dataset for the project Beijing PM2.5.
 Usage: load_data.R --data_url=<load_data_url>
 "-> doc
 
@@ -19,9 +19,8 @@ main <- function(data_url){
   print("The dataset has been loaded to the data folder!")
 }
 
-#' @df df is the dataset the script read in.
 #' @data_url data_url is the URL to the dataset. 
-#' For Beijing PM2.5, the URL is "https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv"
+#' @example read.csv(url(https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv))
 
 # Tests
 main(opt$data_url)

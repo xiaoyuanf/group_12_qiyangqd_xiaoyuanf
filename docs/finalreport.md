@@ -39,8 +39,8 @@ Below are the variables in the dataset:
 | day               | Quantitative     |Day of data in this row|
 | hour              | Quantitative     |Hour of data in this row|
 | `PM2.5`           | Quantitative     |`PM2.5` concentration (ug/m^3)|
-| DEWP              | Quantitative     |Dew Point (â„ƒ)|
-| TEMP              | Quantitative     |Temperature (â„ƒ)|
+| DEWP              | Quantitative     |Dew Point (°C)|
+| TEMP              | Quantitative     |Temperature (°C)|
 | PRES              | Quantitative     |Pressure (hPa)|
 | cbwd              | Categorical      |Combined wind direction|
 | lws               | Quantitative     |Cumulated wind speed (m/s)|
@@ -98,15 +98,15 @@ tidy(lm)
 
 ```
 ## # A tibble: 7 x 5
-##   term        estimate std.error statistic   p.value
-##   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
-## 1 (Intercept) 1836.      72.9       25.2   5.25e-139
-## 2 DEWP           4.10     0.0518    79.2   0.       
-## 3 TEMP          -6.29     0.0675   -93.1   0.       
-## 4 PRES          -1.62     0.0712   -22.8   2.52e-114
-## 5 cbwdNE       -28.9      1.45     -20.0   2.78e- 88
-## 6 cbwdNW       -39.9      1.13     -35.1   9.70e-267
-## 7 cbwdSE         0.435    1.10       0.397 6.92e-  1
+##   term          estimate std.error statistic   p.value
+##   <chr>            <dbl>     <dbl>     <dbl>     <dbl>
+## 1 (Intercept)   1836.      72.9       25.2   5.25e-139
+## 2 DEWP             4.10     0.0518    79.2   0.       
+## 3 TEMP            -6.29     0.0675   -93.1   0.       
+## 4 PRES            -1.62     0.0712   -22.8   2.52e-114
+## 5 cbwdNortheast  -28.9      1.45     -20.0   2.78e- 88
+## 6 cbwdNorthwest  -39.9      1.13     -35.1   9.70e-267
+## 7 cbwdSoutheast    0.435    1.10       0.397 6.92e-  1
 ```
 
 ```r

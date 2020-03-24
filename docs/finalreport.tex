@@ -1,47 +1,34 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-%
-\documentclass[
-]{article}
+\documentclass[]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-  \usepackage{unicode-math}
-  \defaultfontfeatures{Scale=MatchLowercase}
-  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
 \fi
-% Use upquote if available, for straight quotes in verbatim environments
+% use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\makeatletter
-\@ifundefined{KOMAClassName}{% if non-KOMA class
-  \IfFileExists{parskip.sty}{%
-    \usepackage{parskip}
-  }{% else
-    \setlength{\parindent}{0pt}
-    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
-}{% if KOMA class
-  \KOMAoptions{parskip=half}}
-\makeatother
-\usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={Final report},
-  pdfauthor={Margot Chen, Qi Yang},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Final report},
+            pdfauthor={Margot Chen, Qi Yang},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -83,14 +70,6 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Correct order of tables after \paragraph or \subparagraph
-\usepackage{etoolbox}
-\makeatletter
-\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
-\makeatother
-% Allow footnotes in longtable head/foot
-\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
-\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -100,18 +79,52 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-% Set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-\setlength{\emergencystretch}{3em} % prevent overfull lines
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-\title{Final report}
-\author{Margot Chen, Qi Yang}
-\date{2020/3/14}
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Final report}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Margot Chen, Qi Yang}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2020/3/14}
+
 
 \begin{document}
 \maketitle
@@ -178,8 +191,8 @@ day & Quantitative & Day of data in this row\tabularnewline
 hour & Quantitative & Hour of data in this row\tabularnewline
 \texttt{PM2.5} & Quantitative & \texttt{PM2.5} concentration
 (ug/m\^{}3)\tabularnewline
-DEWP & Quantitative & Dew Point (â„ƒ)\tabularnewline
-TEMP & Quantitative & Temperature (â„ƒ)\tabularnewline
+DEWP & Quantitative & Dew Point (°C)\tabularnewline
+TEMP & Quantitative & Temperature (°C)\tabularnewline
 PRES & Quantitative & Pressure (hPa)\tabularnewline
 cbwd & Categorical & Combined wind direction\tabularnewline
 lws & Quantitative & Cumulated wind speed (m/s)\tabularnewline
@@ -291,23 +304,38 @@ observe a decrease in \texttt{PM2.5} concentration since this time.
 
 \begin{verbatim}
 ## # A tibble: 7 x 5
-##   term        estimate std.error statistic   p.value
-##   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
-## 1 (Intercept) 1836.      72.9       25.2   5.25e-139
-## 2 DEWP           4.10     0.0518    79.2   0.       
-## 3 TEMP          -6.29     0.0675   -93.1   0.       
-## 4 PRES          -1.62     0.0712   -22.8   2.52e-114
-## 5 cbwdNE       -28.9      1.45     -20.0   2.78e- 88
-## 6 cbwdNW       -39.9      1.13     -35.1   9.70e-267
-## 7 cbwdSE         0.435    1.10       0.397 6.92e-  1
+##   term          estimate std.error statistic   p.value
+##   <chr>            <dbl>     <dbl>     <dbl>     <dbl>
+## 1 (Intercept)   1836.      72.9       25.2   5.25e-139
+## 2 DEWP             4.10     0.0518    79.2   0.       
+## 3 TEMP            -6.29     0.0675   -93.1   0.       
+## 4 PRES            -1.62     0.0712   -22.8   2.52e-114
+## 5 cbwdNortheast  -28.9      1.45     -20.0   2.78e- 88
+## 6 cbwdNorthwest  -39.9      1.13     -35.1   9.70e-267
+## 7 cbwdSoutheast    0.435    1.10       0.397 6.92e-  1
 \end{verbatim}
 
-\hypertarget{results}{%
-\subsection{Results}\label{results}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{finalreport_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{finalreport_files/figure-latex/unnamed-chunk-4-2.pdf}
+\includegraphics{finalreport_files/figure-latex/unnamed-chunk-4-3.pdf}
+\includegraphics{finalreport_files/figure-latex/unnamed-chunk-4-4.pdf}
+
+Judging by the plots, we can tell that this model has huge residuals and
+cannot predict pm2.5 well.
+
+\hypertarget{results-placeholder-will-be-adjusted-later}{%
+\subsection{Results (placeholder, will be adjusted
+later)}\label{results-placeholder-will-be-adjusted-later}}
 
 In a nutshell, we find that \texttt{PM2.5} concentration is more likely
-to change with time instead of meteorological conditons, which is rather
-surprising as previous studies have shown correlation between
+to change with time instead of meteorological conditions, which is
+rather surprising as previous studies have shown correlation between
 \texttt{PM2.5} and weather variables. Our first finding is that the
 correlations between dew point (DEWP), temperature (TEMP) or pressure
 (PRES) and \texttt{PM2.5}concentration are rather weak (Figure 1), so
@@ -391,5 +419,6 @@ Liang, X., Zou, T., Guo, B., Li, S., Zhang, H., Zhang, S., Huang, H. and
 Chen, S. X. (2015). Assessing Beijing's PM2.5 pollution: severity,
 weather impact, APEC and winter heating. Proceedings of the Royal
 Society A, 471, 20150257.
+
 
 \end{document}

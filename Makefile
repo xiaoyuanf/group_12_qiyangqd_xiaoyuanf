@@ -16,14 +16,14 @@ data/cleaned_data.csv : data/raw_data.csv scripts/data_wrangle.R
 
 # EDA
 images/corr.png images/facted_hist.png images/heatmap.png images/season_PM2.5.png images/year_PM2.5.png : data/cleaned_data.csv data/raw_data.csv scripts/eda.R
-	Rscript scripts/eda.R --raw_path="data/raw_data.csv" --clean_path="data/cleaned_data.csv" --image_path="images"
+	Rscript scripts/eda.R --raw_path="data/raw_data.csv" --clean_path="data/cleaned_data.csv" --image_folder_path="images"
 
 # Generate model
 docs/model.rds : data/cleaned_data.csv scripts/model.R
 	Rscript scripts/model.R --clean_path="data/cleaned_data.csv" --model_path="docs/model.rds"
 
 # Knit report
-docs/finalreport.html docs/finalreport.pdf docs/finalreport.md : images/corr.png images/facted_hist.png images/heatmap.png images/season_PM2.5.png images/year_PM2.5.png docs/finalreport.Rmd data/cleaned_data.csv data/raw_data.csv scripts/knit.R
+docs/finalreport.html docs/finalreport.pdf docs/finalreport.md : images/corr.png images/facted_hist.png images/heatmap.png images/season_PM2.5.png images/year_PM2.5.png docs/finalreport.Rmd data/cleaned_data.csv data/raw_data.csv scripts/knit.R docs/model.rds
 	Rscript scripts/knit.R --rmd_path="docs/finalreport.Rmd"
 
 # Clean targets    

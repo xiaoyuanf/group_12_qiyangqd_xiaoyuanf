@@ -49,8 +49,8 @@ Below are the variables in the dataset:
 | day               | Quantitative     |Day of data in this row|
 | hour              | Quantitative     |Hour of data in this row|
 | `PM2.5`           | Quantitative     |`PM2.5` concentration (ug/m^3)|
-| DEWP              | Quantitative     |Dew Point (â„ƒ)|
-| TEMP              | Quantitative     |Temperature (â„ƒ)|
+| DEWP              | Quantitative     |Dew Point (°C)|
+| TEMP              | Quantitative     |Temperature (°C)|
 | PRES              | Quantitative     |Pressure (hPa)|
 | cbwd              | Categorical      |Combined wind direction|
 | lws               | Quantitative     |Cumulated wind speed (m/s)|

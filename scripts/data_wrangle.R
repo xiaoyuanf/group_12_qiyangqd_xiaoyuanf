@@ -1,19 +1,22 @@
 # author: Margot Chen
 # date: 2020-03-08
 
-"This script cleans the raw dataset by deleting the first column and NAs of the `raw_data.csv`.
-Please save the cleaned dataset in the 'data' folder when using command line.
+"This script reads in the raw data file (in the data folder), cleans the raw dataset by deleting the first column and NAs of the `raw_data.csv`.
+It is recommended to save the cleaned data file in the data folder as well.
 
-Usage: data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>
+Usage: data_wrangle.R --raw_path=<path_to_raw_data_file> --clean_path=<path_to_clean_data_file>
 " -> doc
 
-library(tidyverse)
-library(docopt)
-library(here)
-library(glue)
+# Load packages
+# Create package list
+c <- c("tidyverse", "here", "docopt", "glue") 
+# Suppress output package list
+invisible(lapply(c, require, character.only = TRUE)) 
 
+# Read in command line arguments
 opt <- docopt(doc)
 
+# Main function
 main <- function(raw_path, clean_path) {
   
   # Read in the raw data
@@ -29,7 +32,8 @@ main <- function(raw_path, clean_path) {
   # Save the cleaned data  
   save_data(df, clean_path)
   
-  print(glue("The cleaned dataset is saved as ", clean_path, "."))
+  # Message to the user
+  print(glue("The cleaned dataset is saved to ", clean_path, "."))
 
 }
 
@@ -38,7 +42,7 @@ main <- function(raw_path, clean_path) {
 #' @example read_data('data/raw_data.csv')
 #' 
 #' @param clean_path indicates where the wrangled data should be saved.
-#' @example save_data("data/data_cleaned.csv")
+#' @example save_data("data/cleaned_data.csv")
 
 # Read in the raw dataset
 read_data <- function(raw_path) {
@@ -50,6 +54,6 @@ save_data <- function(df, clean_path) {
   write.csv(df, here(clean_path), row.names=FALSE)
 }
 
-# Tests
+# Call the main function
 main(opt$raw_path, opt$clean_path)
 

@@ -7,9 +7,8 @@ Usage: model.R --clean_path=<clean_data_path> --model_path=<model_path>
 "->doc
 
 # Load packages
-suppressMessages(library(tidyverse))
-suppressMessages(library(here))
-suppressMessages(library(docopt))
+c <- c("tidyverse", "here", "docopt") # Create package list
+invisible(lapply(c, require, character.only = TRUE)) 
 
 opt <- docopt(doc)
 

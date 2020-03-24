@@ -45,19 +45,19 @@ __tests__: Tests for functions.
 3. Run the following scripts (in order) with specified arguments.
 
   - [load_data.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/load_data.R): Save the raw data as a .csv in the `data` folder from an external URL.         
-  `Rscript scripts/load_data.R     --data_url=https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv`    
+  `Rscript scripts/load_data.R --data_url="https://archive.ics.uci.edu/ml/machine-learning-databases/00381/PRSA_data_2010.1.1-2014.12.31.csv"`    
   
   - [data_wrangle.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/data_wrangle.R): Save a new cleaned dataset as a .csv in the `data` folder.      
-  `Rscript scripts/data_wrangle.R --raw_path=<raw_data_path> --clean_path=<clean_data_path>`
+  `Rscript scripts/data_wrangle.R --raw_path="data/raw_data.csv" --clean_path="data/cleaned_data.csv"`   
   
   - [eda.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/eda.R): Run exploratory data analysis and save the plots in a user defined location.         
-  `Rscript scripts/eda.R --raw_path=<raw_data_path> --clean_path=<clean_data_path> --image_path=<image_path>`
+  `Rscript scripts/eda.R --raw_path="data/raw_data.csv" --clean_path="data/cleaned_data.csv" --image_folder_path="images"`
   
   - [model.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/model.R): Run a linear regression and save the model in a user defined location.
-  `Rscript scripts/model.R --clean_path=<clean_data_path> --model_path=<model_path>`
+  `Rscript scripts/model.R --clean_path="data/cleaned_data.csv" --model_path="data/model.rds"`
   
   - [knit.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/knit.R): Knit the final report.              
-  `Rscript scripts/knit.R --rmd_path=<rmd_path>`
+  `Rscript scripts/knit.R --rmd_path="docs/finalreport.Rmd"`
 
 ### If you are using GNU MAKE:
 

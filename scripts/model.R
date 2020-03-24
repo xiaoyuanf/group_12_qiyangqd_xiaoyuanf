@@ -7,7 +7,7 @@ Usage: model.R --clean_path=<clean_data_path> --model_path=<model_path>
 "->doc
 
 # Load packages
-c <- c("tidyverse", "here", "docopt") # Create package list
+c <- c("tidyverse", "here", "docopt", "glue") # Create package list
 invisible(lapply(c, require, character.only = TRUE)) 
 
 opt <- docopt(doc)
@@ -24,7 +24,7 @@ main <- function(clean_path, model_path) {
   saveRDS(model, file = here(model_path))
   
   # message for users
-  print("Linear regression has run successfully!")
+  print(glue("Linear regression has run successfully, and the model has been saved in ", model_path, "."))
 }
 
 

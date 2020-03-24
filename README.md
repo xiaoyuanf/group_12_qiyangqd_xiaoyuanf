@@ -54,7 +54,7 @@ __tests__: Tests for functions.
   `Rscript scripts/eda.R --raw_path="data/raw_data.csv" --clean_path="data/cleaned_data.csv" --image_folder_path="images"`
   
   - [model.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/model.R): Run a linear regression and save the model in a user defined location.
-  `Rscript scripts/model.R --clean_path="data/cleaned_data.csv" --model_path="docs/model.rds"`
+  `Rscript scripts/model.R --clean_path="data/cleaned_data.csv" --model_path="data/model.rds"`
   
   - [knit.R](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/scripts/knit.R): Knit the final report.              
   `Rscript scripts/knit.R --rmd_path="docs/finalreport.Rmd"`

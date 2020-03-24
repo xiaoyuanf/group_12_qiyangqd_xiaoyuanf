@@ -92,7 +92,7 @@ The purpose of the line chart was to show the change of `PM2.5` concentration ac
 
 
 ```r
-lm <- readRDS(file=here::here("docs", "model.rds"))
+lm <- readRDS(file=here::here("data", "model.rds"))
 tidy(lm)
 ```
 

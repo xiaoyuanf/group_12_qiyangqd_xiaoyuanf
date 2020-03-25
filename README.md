@@ -26,6 +26,30 @@ __Milestone 4:__
 __Milestone 5:__   
 __Milestone 6:__   
 
+## Dashboard Proposal
+### Description
+In our dashboard of Beijing PM2.5 dataset, we want to enable users to explore the two research questions:
+1. How did Beijing PM2.5 change over time?
+2. How did weather factors, namely temperature, pressure, dew point, combined wind direction, and cumulated wind speed, relate to PM2.5.
+
+This dashboard will have a heatmap overview of hourly PM2.5 from 2012-2014. Users will be able to select the time range of interest.
+
+To address Research Question 1, we will use two graphs. One is a line chart of daily or monthly average PM2.5 across the four years. Users will be able to choose the granularity of data, i.e. daily or monthly. Since the daily PM2.5 has been changing rapidly and hard to follow, we will also use number of days when PM2.5 is lower than [35](https://en.wikipedia.org/wiki/Particulates#China) as another indicator. In the second graph, we will show the monthly number of days under 35 across the four years.
+
+To address Research Question 2, we will use a faceted scatter plot. Users will be able to choose "view by seasons" or "view by wind direction". Within each view, users can pick weather factors and see the relationship between PM2.5 and the chosen weather factor. 
+
+### Usage Scenario
+Xiaowang is a college student living in Beijing. He cares about the wellbeing of people in Beijing and is curious about which factor(s) affect PM2.5. He also wants to know whether regulations with regard to air quality have been effectively improving the situation. He has basic literacy of reading charts and figures. 
+
+Once Xiaowang open the dashboard, he will see a heatmap of hourly PM2.5 of 2014. He can also pick other years from a checkbox. In the heatmap he can notice a seasonal pattern: PM2.5 tends to be lower during spring and summer. 
+
+To find out how __PM2.5 changed overtime__, Xiaowang moves on to the second section of the dashboard, where he can find the daily and monthly average PM2.5 from 2011-2014. He can also choose to show the date when PM2.5 Reduction Plan was implemented, and check out if things have changed since then. The second graph in this section shows the number of days when PM2.5<35 in each month. Xiaowang can decide which years to display on this graph. He will notice that things haven't changed much after Sep 1st, 2013, when the PM2.5 Reduction Plan was carried out. 
+
+To __explore how weather factors related to PM2.5__, Xiaowang moves to the third section, where he can pick single factors and see its relation with PM2.5. Noticing that these relations can be different under different seasons or wind directions, Xiaowang can pick "view by seasons" or "view by wind direction". But it's a bit disappointing that no single weather factor shows strong correlation with PM2.5. Xiaowang may develop an understanding that weather conditions cannot predict PM2.5 very well.
+
+### Sketch
+![sketch of dashboard](https://raw.githubusercontent.com/xiaoyuanf/group_12_qiyangqd_xiaoyuanf/master/images/sketch.JPG)
+
 ## Repository Component
 __docs__: `.Rmd`, `.html` and`.md` files, including a proposal and a final report.     
 __data__: Raw and cleaned/wrangled datasets.        

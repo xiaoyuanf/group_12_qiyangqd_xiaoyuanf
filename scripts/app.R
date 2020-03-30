@@ -22,15 +22,20 @@ app <- Dash$new()
 df_clean <- read.csv(here("data", "cleaned_data.csv"))
 df <- read.csv(here("data", "raw_data.csv"))
 
+
+
+
+
+### Line graph and slider: readers can change the range of time to see how [pm2.5] changes with time
 ### Slider
 year_slider <- dccRangeSlider(
   id='year-slider',
-  min=14611,
-  max=16435,
-  step=1,
+  min=14611, # 2010-01-02
+  max=16435, # 2014-12-31
+  step=1, # each move is 1
   value=list(14611, 16435),
   marks = list(
-    "14611" = list("label" = "2010"),
+    "14611" = list("label" = "2010"), # marks the start of each year
     "14976" = list("label" = "2011"),
     "15341" = list("label" = "2012"),
     "15706" = list("label" = "2013"),
@@ -38,7 +43,6 @@ year_slider <- dccRangeSlider(
     "16435" = list("label" = "2015")
   )
 )
-
 
 ### Line graph: change the time range 
 make_line_graph <- function(value=list(14611, 16435)){

@@ -80,7 +80,7 @@ make_line_graph <- function(value=list(14611, 16435)){
     # add a vertical line showing the time when Chinese overnment launched the plan to control pm2.5
 
     # convert to ggplotly()
-  plot_year_change <- ggplotly(plot_year_change)
+  ggplotly(plot_year_change)
 }
 
 

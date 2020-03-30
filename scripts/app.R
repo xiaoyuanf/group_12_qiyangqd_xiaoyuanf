@@ -27,6 +27,7 @@ year_slider <- dccRangeSlider(
   id='year-slider',
   min=14611,
   max=16435,
+  step=1,
   value=list(14611, 16435),
   marks = list(
     "14611" = list("label" = "2010"),
@@ -42,9 +43,11 @@ year_slider <- dccRangeSlider(
 ### Line graph: change the time range 
 make_line_graph <- function(value=list(14611, 16435)){
 
-  ## Convert values to date
-  date1 <- as.Date(value[1], origin = "1970-01-01")
-  date2 <- as.Date(value[2], origin = "1970-01-01")
+  ## Convert input values to integer then to date
+  # `as.Date()` convert input (must be integer) to date format
+  # `as.integer()` convert input to integer format
+  date1 <- as.Date(as.integer(value[1]), origin = "1970-01-01")
+  date2 <- as.Date(as.integer(value[2]), origin = "1970-01-01")
   
   ## Get a new dataframe
   df_year_change <- df_clean
@@ -68,6 +71,7 @@ make_line_graph <- function(value=list(14611, 16435)){
          y = "[pm2.5]",
          title = "[pm2.5] VS Time") +
     theme_classic() +
+    # change the range of date on x axis
     scale_x_date(limits = as.Date(c(date1,date2)))
     # add a vertical line showing the time when Chinese overnment launched the plan to control pm2.5
 
@@ -89,8 +93,6 @@ app$layout(
     list(
       htmlH1("Beijing PM2.5 Data"),
       
-      
-      
       # Slider for changing time range
       year_slider,
       # Graph for time range
@@ -109,6 +111,7 @@ app$layout(
 app$callback(
   output=list(id = 'graph_time', property='figure'),
   params=list(input(id='year-slider', property='value')),
+  # Create a list of values
   function(value) {
     make_line_graph(value)
   })

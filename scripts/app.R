@@ -76,7 +76,7 @@ make_line_graph <- function(value=list(14611, 16435)){
          title = "[pm2.5] VS Time") +
     theme_classic() +
     # change the range of date on x axis
-    scale_x_date(limits = as.Date(c(date1,date2)))
+    scale_x_date(date_labels = "%Y-%m-%d", limits = as.Date(c(date1,date2)))
     # add a vertical line showing the time when Chinese overnment launched the plan to control pm2.5
 
     # convert to ggplotly()

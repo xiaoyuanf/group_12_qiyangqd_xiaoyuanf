@@ -5,9 +5,29 @@ suppressPackageStartupMessages(library(ggplot2))
 suppressPackageStartupMessages(library(plotly))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(here))
+suppressPackageStartupMessages(library(viridis))
 
+# overview heatmap
+make_heatmap <- function(checklistValue=2013){
+  ht <- df %>% 
+    filter(year==checklistValue) %>% 
+    ggplot(aes(day,hour,fill=pm2.5))+
+    geom_tile(color= "white",size=0.1) +
+    # Sets the order of colours in the scale reverse
+    scale_fill_viridis(name="Hourly pm2.5", direction = -1)+ 
+    facet_grid(year~month)+
+    scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
+    scale_x_continuous(breaks =c(1,10,20,31))+
+    theme_minimal(base_size = 8)+
+    labs(x="Day", y="Hour")+
+    ggtitle(paste0('Hourly PM2.5 in year ', 
+                   #checklistValue is a list. need to unlist and turn the vector in to string
+                   paste(sort(unlist(checklistValue)), collapse = ' ')))
+    
+  ggplotly(ht)
+}
 
-### Line graph: change the time range 
+# Line graph: change the time range 
 make_line_graph <- function(value=list(14611, 16435)){
   
   ## Convert input values to integer then to date

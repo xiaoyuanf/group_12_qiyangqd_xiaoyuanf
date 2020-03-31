@@ -6,7 +6,7 @@
 Usage: app.R
 "
 
-### Load libraries
+# Load libraries
 
 library(dash)
 library(dashCoreComponents)
@@ -15,10 +15,11 @@ library(ggplot2)
 library(plotly)
 library(tidyverse)
 library(here)
+library(viridis)
 
 app <- Dash$new()
 
-### Load the data
+# Load the data
 df_clean <- read.csv(here("data", "cleaned_data.csv"))
 df <- read.csv(here("data", "raw_data.csv"))
 
@@ -31,27 +32,38 @@ source(here("scripts/dash_components.R"))
 
 
 
-### layout
+# layout
 app$layout(
   htmlDiv(
     list(
-      htmlH1("Beijing PM2.5 Data"),
-      
+      title,
+      intro,
+      overview_header,
+      div_checklist,
+      overview_heatmap,
+      time_header,
       # Slider for changing time range
       year_slider,
       # Graph for time range
       graph_time,
-      
-      
+      factors_header,
       dccMarkdown("[Data Source](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#)")
       )
 
           )
 )
 
-### app callback
+# app callback
+## year checklist callback
+app$callback(
+  output=list(id='heat', property='figure'),
+  params=list(input(id='year_checklist', property='value')),
+  function(yearCheck) {
+    make_heatmap(yearCheck)
+  }
+)
 
-# year_time callback
+## year_time callback
 app$callback(
   output=list(id = 'graph_time', property='figure'),
   params=list(input(id='year-slider', property='value')),
@@ -62,5 +74,5 @@ app$callback(
 
 
 
-### Run app
+# Run app
 app$run_server(debug=TRUE)

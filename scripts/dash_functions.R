@@ -66,3 +66,17 @@ make_line_graph <- function(value=list(14611, 16435)){
   ggplotly(plot_year_change)
 }
 
+
+# scatter plot
+make_scatter <- function(xaxis="TEMP"){
+  scatter <- df_clean_sample %>% 
+    ggplot(aes(x=!!sym(xaxis), y=pm2.5))+
+    geom_point(alpha=0.5)+
+    facet_wrap(~cbwd)+
+    theme_bw()+
+    labs(x = factor_xaxis$label[which(factor_xaxis$value == xaxis)], 
+         y = "PM2.5")+
+    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5'))
+  
+  ggplotly(scatter)
+}

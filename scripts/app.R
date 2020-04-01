@@ -22,13 +22,11 @@ app <- Dash$new()
 # Load the data
 df_clean <- read.csv(here("data", "cleaned_data.csv"))
 df <- read.csv(here("data", "raw_data.csv"))
+df_clean_sample <- sample_n(df_clean, 5000)
 
 # source
 source(here("scripts/dash_functions.R"))
 source(here("scripts/dash_components.R"))
-
-
-
 
 
 
@@ -47,6 +45,8 @@ app$layout(
       # Graph for time range
       graph_time,
       factors_header,
+      div_radio,
+      factor_scatterplot,
       dccMarkdown("[Data Source](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#)")
       )
 
@@ -72,6 +72,14 @@ app$callback(
     make_line_graph(value)
   })
 
+## weather factor callback
+app$callback(
+  output=list(id='scatter', property='figure'),
+  params=list(input(id='factor_radio', property='value')),
+  function(x_axis) {
+    make_scatter(x_axis)
+  }
+)
 
 
 # Run app

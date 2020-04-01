@@ -47,9 +47,9 @@ factors_header <- htmlDiv(
 yearChecklist <- dccChecklist(
   id='year_checklist',
   options=list(
-    list("label" = "2011", "value" = "2011"),
-    list("label" = "2012", "value" = "2012"),
-    list("label" = "2013", "value" = "2013"),
+    list("label" = "2011  ", "value" = "2011"),
+    list("label" = "2012  ", "value" = "2012"),
+    list("label" = "2013  ", "value" = "2013"),
     list("label" = "2014", "value" = "2014")
   ),
   value=list("2013")
@@ -71,7 +71,6 @@ overview_heatmap <- dccGraph(
 )
 
 
-
 # Line graph and slider: readers can change the range of time to see how [pm2.5] changes with time
 ## Slider
 year_slider <- dccRangeSlider(
@@ -90,10 +89,41 @@ year_slider <- dccRangeSlider(
   )
 )
 
-
-
 ## Graph
 graph_time <- dccGraph(
   id = 'graph_time',
   figure = make_line_graph()
 )
+
+# relationship scatterplot
+## weather factor radiobutton
+factor_xaxis <-
+  tibble(
+    label = c("Temperature", "Pressure","Dew Point", "Cumulated wind speed"),
+    value = c("TEMP", "PRES", "DEWP", "Iws")
+  )
+
+factorRadio <- dccRadioItems(
+  id='factor_radio',
+  options=map(1:nrow(factor_xaxis), function(i) {
+    list(label=factor_xaxis$label[i], value=factor_xaxis$value[i])
+  }),
+  value = "TEMP",
+  labelStyle = list("display" = "block")
+)
+
+div_radio <- htmlDiv(
+  list(
+    htmlLabel('Select one weather factor: '),
+    factorRadio
+  ), style=list(
+    'padding'=10
+  )
+)
+
+## scatterplot
+factor_scatterplot <- dccGraph(
+  id='scatter',
+  figure=make_scatter()
+)
+

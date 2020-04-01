@@ -2,8 +2,8 @@
 
 # title
 title <- htmlDiv(
-  #className = "pretty_container",
-  list(htmlH1('BEIJING PM2.5')),
+  className = "pretty_container",
+  list(htmlH1('BEIJING PM2.5 (2011-2014)')),
   style = list(
     'columnCount' = 1,
     'background-color' = '#8ECCD9',
@@ -14,6 +14,7 @@ title <- htmlDiv(
 
 # introduction
 intro <- htmlDiv(
+  className = "pretty_container",
   list(
     htmlH2("Introduction"),
     dccMarkdown('
@@ -28,17 +29,19 @@ intro <- htmlDiv(
 
 # headers
 overview_header <- htmlDiv(
-  #className = "pretty_container",
-  list(htmlH2("Overview")),
+  className = "pretty_container",
+  list(htmlH2("Overview of Hourly PM2.5 Concentration")),
   style = list('height'=40)
 )
 
 time_header <- htmlDiv(
+  className = "pretty_container",
   list(htmlH2("How did Beijing PM2.5 change over time?")),
   style = list('height'=40)
 )
 
 factors_header <- htmlDiv(
+  className = "pretty_container",
   list(htmlH2("How did weather factors relate to PM2.5?")),
   style = list('height'=40)
 )
@@ -57,10 +60,10 @@ yearChecklist <- dccChecklist(
 
 div_checklist <- htmlDiv(
   list(
-    htmlLabel('Select one or more years: '),
+    htmlLabel('Please pick one or more years you are interested in to see the hourly PM2.5 concentration: '),
     yearChecklist
   ), style=list(
-    'padding'=10
+    'padding'=20
   )
 )
 
@@ -86,6 +89,16 @@ year_slider <- dccRangeSlider(
     "15706" = list("label" = "2013"),
     "16071" = list("label" = "2014"),
     "16435" = list("label" = "2015")
+  )
+)
+
+div_slider <- htmlDiv(
+  list(
+    htmlLabel('Please pick the time range you are interested in to see the PM2.5 concentration across time: '),
+    year_slider,
+    dccMarkdown("The vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan.")
+  ), style=list(
+    'padding'=20
   )
 )
 
@@ -117,7 +130,7 @@ div_radio <- htmlDiv(
     htmlLabel('Select one weather factor: '),
     factorRadio
   ), style=list(
-    'padding'=10
+    'padding'=20
   )
 )
 

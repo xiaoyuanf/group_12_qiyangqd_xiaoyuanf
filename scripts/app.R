@@ -32,23 +32,27 @@ source(here("scripts/dash_components.R"))
 
 # layout
 app$layout(
+  title,
   htmlDiv(
+    className = "pretty_container",
     list(
-      title,
       intro,
       overview_header,
       div_checklist,
       overview_heatmap,
       time_header,
       # Slider for changing time range
-      year_slider,
+      div_slider,
       # Graph for time range
       graph_time,
       factors_header,
       div_radio,
       factor_scatterplot,
       dccMarkdown("[Data Source](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#)")
-      )
+      ), style = list('display' = 'block',
+                      'margin-left' = 'auto',
+                      'margin-right' = 'auto',
+                      'width'='90%')
 
           )
 )

@@ -76,7 +76,7 @@ make_scatter <- function(xaxis="TEMP"){
     theme_bw()+
     labs(x = factor_xaxis$label[which(factor_xaxis$value == xaxis)], 
          y = "PM2.5")+
-    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5'))
+    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5, in four combined wind directions'))
   
   ggplotly(scatter)
 }

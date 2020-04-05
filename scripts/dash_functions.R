@@ -14,7 +14,7 @@ make_heatmap <- function(checklistValue=2013){
     ggplot(aes(day,hour,fill=pm2.5))+
     geom_tile(color= "white",size=0.1) +
     # Sets the order of colours in the scale reverse
-    scale_fill_viridis(name="Hourly pm2.5", direction = -1)+ 
+    scale_fill_viridis(name="Hourly PM2.5 concentration", direction = -1)+ 
     facet_grid(year~month)+
     scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
     scale_x_continuous(breaks =c(1,10,20,31))+
@@ -86,7 +86,7 @@ make_scatter <- function(xaxis="TEMP"){
     theme_bw()+
     labs(x = factor_xaxis$label[which(factor_xaxis$value == xaxis)], 
          y = "PM2.5")+
-    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5, in four combined wind directions'))
+    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5 concentration in four wind directions'))
   
   ggplotly(scatter)
 }

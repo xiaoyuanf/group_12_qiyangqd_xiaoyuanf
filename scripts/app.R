@@ -41,9 +41,7 @@ app$layout(
       div_checklist,
       overview_heatmap,
       time_header,
-      # Slider for changing time range
       div_slider,
-      # Graph for time range
       graph_time,
       factors_header,
       div_radio,
@@ -75,6 +73,15 @@ app$callback(
   function(value) {
     make_line_graph(value)
   })
+
+## year_time hint callback
+app$callback(
+  output(id = 'time_range_hint', property='children'),
+  params=list(input(id='year-slider', property='value')),
+  function(value) {
+    time_range(value)
+  })
+
 
 ## weather factor callback
 app$callback(

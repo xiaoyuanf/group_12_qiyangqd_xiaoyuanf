@@ -81,7 +81,8 @@ year_slider <- dccRangeSlider(
   min=14611, # 2010-01-02
   max=16435, # 2014-12-31
   step=1, # each move is 1
-  value=list(14611, 16435),
+  value=list(14975, 16071),
+  allowCross = FALSE,
   marks = list(
     "14611" = list("label" = "2010"), # marks the start of each year
     "14976" = list("label" = "2011"),
@@ -94,9 +95,10 @@ year_slider <- dccRangeSlider(
 
 div_slider <- htmlDiv(
   list(
-    htmlLabel('Please pick the time range you are interested in to see the PM2.5 concentration across time: '),
+    htmlLabel('Please pick the time range you are interested in to see the changes in PM2.5 concentration across time: '),
     year_slider,
-    dccMarkdown("The vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan.")
+    htmlDiv(id='time_range_hint'),
+    dccMarkdown("__Note__: The vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan (September 2013).")
   ), style=list(
     'padding'=20
   )

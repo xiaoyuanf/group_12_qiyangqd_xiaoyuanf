@@ -51,7 +51,7 @@ To find out how __PM2.5 changed overtime__, Xiaowang moves on to the second sect
 To __explore how weather factors related to PM2.5__, Xiaowang moves to the third section, where he can pick single factors and see its relation with PM2.5. Noticing that these relations can be different under different seasons or wind directions, Xiaowang can pick "view by seasons" or "view by wind direction". But it's a bit disappointing that no single weather factor shows strong correlation with PM2.5. Xiaowang may develop an understanding that weather conditions cannot predict PM2.5 very well.
 
 ### Sketch
-![sketch of dashboard](https://raw.githubusercontent.com/xiaoyuanf/group_12_qiyangqd_xiaoyuanf/master/images/sketch.JPG)
+![sketch of dashboard](https://raw.githubusercontent.com/xiaoyuanf/group_12_qiyangqd_xiaoyuanf/master/images/Sketch_DashboardProposal.JPG)
 
 ## Repository Component
 __docs__: `.Rmd`, `.html` and`.md` files, including a proposal and a final report.     

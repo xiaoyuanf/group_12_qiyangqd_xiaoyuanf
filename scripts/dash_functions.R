@@ -14,7 +14,7 @@ make_heatmap <- function(checklistValue=2013){
     ggplot(aes(day,hour,fill=pm2.5))+
     geom_tile(color= "white",size=0.1) +
     # Sets the order of colours in the scale reverse
-    scale_fill_viridis(name="Hourly pm2.5", direction = -1)+ 
+    scale_fill_viridis(name="Hourly PM2.5 concentration", direction = -1)+ 
     facet_grid(year~month)+
     scale_y_continuous(trans = "reverse", breaks = unique(df$hour))+
     scale_x_continuous(breaks =c(1,10,20,31))+
@@ -28,7 +28,7 @@ make_heatmap <- function(checklistValue=2013){
 }
 
 # Line graph: change the time range 
-make_line_graph <- function(value=list(14611, 16435)){
+make_line_graph <- function(value=list(14975, 16071)){
   
   ## Convert input values to integer then to date
   # `as.Date()` convert input (must be integer) to date format
@@ -55,8 +55,8 @@ make_line_graph <- function(value=list(14611, 16435)){
     geom_vline(xintercept = as.numeric(as.Date("2013-09-01")),
                linetype=4, color = "blue", size = 1) +
     labs(x = "Time",
-         y = "[pm2.5]",
-         title = "[pm2.5] VS Time") +
+         y = "PM2.5 concentration",
+         title = "Changes in PM2.5 concentration across time") +
     theme_classic() +
     # change the range of date on x axis
     scale_x_date(date_labels = "%Y-%m-%d", limits = as.Date(c(date1,date2)))
@@ -66,6 +66,16 @@ make_line_graph <- function(value=list(14611, 16435)){
   ggplotly(plot_year_change)
 }
 
+# Hint for users: what time range they select
+time_range <- function(value=list(14975, 16071)){
+  
+  # Create date1 and date2 as the start and end of the selected time range
+  date1 <- as.Date(as.integer(value[1]), origin = "1970-01-01")
+  date2 <- as.Date(as.integer(value[2]), origin = "1970-01-01")
+  
+  # Output time range
+  sprintf(paste0('You have selected ', date1, ' to ', date2, '.'))
+}
 
 # scatter plot
 make_scatter <- function(xaxis="TEMP"){
@@ -76,7 +86,7 @@ make_scatter <- function(xaxis="TEMP"){
     theme_bw()+
     labs(x = factor_xaxis$label[which(factor_xaxis$value == xaxis)], 
          y = "PM2.5")+
-    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5, in four combined wind directions'))
+    ggtitle(paste0('The correlation between ', factor_xaxis$label[which(factor_xaxis$value == xaxis)], ' and PM2.5 concentration in four wind directions'))
   
   ggplotly(scatter)
 }

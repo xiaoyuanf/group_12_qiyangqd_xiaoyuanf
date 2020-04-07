@@ -3,7 +3,7 @@
 # title
 title <- htmlDiv(
   className = "pretty_container",
-  list(htmlH1('BEIJING PM2.5 (2011-2014)')),
+  list(htmlH1('BEIJING PM2.5 (2010-2014)')),
   style = list(
     'columnCount' = 1,
     'background-color' = '#8ECCD9',
@@ -18,11 +18,17 @@ intro <- htmlDiv(
   list(
     htmlH2("Introduction"),
     dccMarkdown('
-                Welcome to the BEIJING PM2.5 dashboard!
+                Welcome to the BEIJING PM2.5 dashboard! 
                 
-                This dashboard allows you to explore the [Beijing PM2.5 dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#).
+                Beijing, the capital city of China, has been fighting against PM2.5 pollution in recent decades. PM2.5 are fine airborne particles less than 2.5 micrometers that can cause severe damage to human health. This dashboard enables you to explore how __time__ and __weather conditions__ contribute to PM2.5 concentration in Beijing from 2010 to 2014 based on the [Beijing PM2.5 dataset](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#).  
                 
-                Below, you can find out how PM2.5 in Beijing from 2011-2014 changed over time, and how weather factors related the change.
+                By playing around this dashboard, you can:
+                
+                1) obtain an overview of the temporal distribution of PM2.5 concentration in Beijing from 2010 to 2014; 
+                
+                2) explore how daily PM2.5 concentration changed in a certain period from 2010 to 2014; 
+                
+                3) explore how weather factors (temperature, pressure, dew point and wind speed) were correlated to PM2.5 concentration.
                 ')
   )
 )
@@ -30,20 +36,28 @@ intro <- htmlDiv(
 # headers
 overview_header <- htmlDiv(
   className = "pretty_container",
-  list(htmlH2("Overview of Hourly PM2.5 Concentration")),
-  style = list('height'=40)
+  list(htmlH2("Overview"),
+       dccMarkdown('
+                   In the heatmap below, each big column represents a month (values at the top) composed of days (values at the bottom). The concentration of PM2.5 of each hour (values on the left) is represented by a color ranging from yellow (low concentration) to dark blue (high concentration) according to the legend. The value on the right indicates the year(s) that users select.
+                   '))
 )
 
 time_header <- htmlDiv(
   className = "pretty_container",
-  list(htmlH2("How did Beijing PM2.5 change over time?")),
-  style = list('height'=40)
+  list(htmlH2("How did Beijing PM2.5 change over time?"),
+       dccMarkdown('
+                   In the line graph below, the change in PM2.5 concentration is represented on a daily level and a certain time range can be selected. Note that the vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan (September 2013). 
+                   
+                   '))
 )
 
 factors_header <- htmlDiv(
   className = "pretty_container",
-  list(htmlH2("How did weather factors relate to PM2.5?")),
-  style = list('height'=40)
+  list(htmlH2("How did weather factors relate to PM2.5?"),
+       dccMarkdown('
+                   In the scatter plots below, one can see the corrleation between a weather factor that he is interested in and PM2.5 concentration at four different wind directions. 
+                   
+                   '))
 )
 
 #overview checklist
@@ -81,7 +95,8 @@ year_slider <- dccRangeSlider(
   min=14611, # 2010-01-02
   max=16435, # 2014-12-31
   step=1, # each move is 1
-  value=list(14611, 16435),
+  value=list(14975, 16071),
+  allowCross = FALSE,
   marks = list(
     "14611" = list("label" = "2010"), # marks the start of each year
     "14976" = list("label" = "2011"),
@@ -94,12 +109,9 @@ year_slider <- dccRangeSlider(
 
 div_slider <- htmlDiv(
   list(
-    htmlLabel('Please pick the time range you are interested in to see the PM2.5 concentration across time: '),
+    htmlLabel('Please pick a time range to see the changes of daily PM2.5 concentration: '),
     year_slider,
-    dccMarkdown("The vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan.")
-  ), style=list(
-    'padding'=20
-  )
+    htmlDiv(id='time_range_hint')), style=list('padding'=20)
 )
 
 ## Graph
@@ -127,7 +139,7 @@ factorRadio <- dccRadioItems(
 
 div_radio <- htmlDiv(
   list(
-    htmlLabel('Select one weather factor: '),
+    htmlLabel('Please select a weather factor: '),
     factorRadio
   ), style=list(
     'padding'=20

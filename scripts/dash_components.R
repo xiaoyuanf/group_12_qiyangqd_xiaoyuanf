@@ -3,7 +3,7 @@
 # title
 title <- htmlDiv(
   className = "pretty_container",
-  list(htmlH1('BEIJING PM2.5 (2011-2014)')),
+  list(htmlH1('BEIJING PM2.5 (2010-2014)')),
   style = list(
     'columnCount' = 1,
     'background-color' = '#8ECCD9',
@@ -34,37 +34,13 @@ intro <- htmlDiv(
   )
 )
 
-# headers
-overview_header <- htmlDiv(
-  className = "pretty_container",
-  list(htmlH2("Overview"),
-       dccMarkdown('
-                   In the heatmap below, each big column represents a month (values at the top) composed of days (values at the bottom). The concentration of PM2.5 of each hour (values on the left) is represented by a color ranging from yellow (low concentration) to dark blue (high concentration) according to the legend. The value on the right indicates the year(s) that users select.
-                   '))
-)
 
-time_header <- htmlDiv(
-  className = "pretty_container",
-  list(htmlH2("How did Beijing PM2.5 change over time?"),
-       dccMarkdown('
-                   In the line graph below, the change in PM2.5 concentration is represented on a daily level and a certain time range can be selected. Note that the vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan (September 2013). 
-                   
-                   '))
-)
 
-factors_header <- htmlDiv(
-  className = "pretty_container",
-  list(htmlH2("How did weather factors relate to PM2.5?"),
-       dccMarkdown('
-                   In the scatter plots below, one can see the corrleation between a weather factor that he is interested in and PM2.5 concentration at four different wind directions. 
-                   
-                   '))
-)
-
-#overview checklist
+# checklist
 yearChecklist <- dccChecklist(
   id='year_checklist',
   options=list(
+    list("label" = "2010  ", "value" = "2010"),
     list("label" = "2011  ", "value" = "2011"),
     list("label" = "2012  ", "value" = "2012"),
     list("label" = "2013  ", "value" = "2013", disabled=TRUE),
@@ -110,7 +86,6 @@ year_slider <- dccRangeSlider(
 )
 
 div_slider <- htmlDiv(
-  className = "pretty_container",
   list(
     htmlLabel('Please pick a time range to see the changes of daily PM2.5 concentration: '),
     year_slider,
@@ -155,3 +130,42 @@ factor_scatterplot <- dccGraph(
   figure=make_scatter()
 )
 
+
+# overview
+overview <- htmlDiv(
+  className = "pretty_container",
+  list(htmlH2("Overview"),
+       dccMarkdown('
+                   In the heatmap below, each big column represents a month (values at the top) composed of days (values at the bottom). The concentration of PM2.5 of each hour (values on the left) is represented by a color ranging from yellow (low concentration) to dark blue (high concentration) according to the legend. The value on the right indicates the year(s) that users select.
+                   '),
+       div_checklist,
+       overview_heatmap
+  )
+)
+
+# pm2.5 change over time
+time <- htmlDiv(
+  className = "pretty_container",
+  list(htmlH2("How did Beijing PM2.5 change over time?"),
+       dccMarkdown('
+                   In the line graph below, the change in PM2.5 concentration is represented on a daily level and a certain time range can be selected. Note that the vertical blue line indicates the time when Chinese government started a PM2.5 reduction plan (September 2013). 
+                   
+                   '),
+       div_slider,
+       graph_time
+  )
+)
+
+# correlated factors
+
+factors <- htmlDiv(
+  className = "pretty_container",
+  list(htmlH2("How did weather factors relate to PM2.5?"),
+       dccMarkdown('
+                   In the scatter plots below, one can see the corrleation between a weather factor that he is interested in and PM2.5 concentration at four different wind directions. 
+                   
+                   '),
+       div_radio,
+       factor_scatterplot
+  )
+)

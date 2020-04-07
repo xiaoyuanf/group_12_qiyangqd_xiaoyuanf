@@ -37,20 +37,14 @@ app$layout(
     style = list(
                  'margin-left' = 'auto',
                  'margin-right' = 'auto',
-                 'width'='100%')),
+                 'width'='95%')),
   htmlDiv(
     #className = "pretty_container",
     list(
       intro,
-      overview_header,
-      div_checklist,
-      overview_heatmap,
-      time_header,
-      div_slider,
-      graph_time,
-      factors_header,
-      div_radio,
-      factor_scatterplot,
+      overview,
+      time,
+      factors,
       dccMarkdown("[Data Source](https://archive.ics.uci.edu/ml/datasets/Beijing+PM2.5+Data#)")
       ), style = list('display' = 'block',
                       'margin-left' = 'auto',

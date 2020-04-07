@@ -17,3 +17,11 @@ This folder contains the scripts we used for the Beijing PM2.5 project.
 - `app.R`: Dashboard.    
 - `dash_components.R`: Dashboard components.    
 - `dash_functions.R`: Dashboard functions.    
+
+#### Dashboard deployment:    
+
+- `apt-packages`: List of (ubuntu) system packages that need to be installed.    
+- `init.R`: List of R packages that need to be installed.    
+- `Dockerfile`: List of “scripts” that needs to be run for the `app.R` to run successfully.    
+- `heroku.yml`: Tells Heroku that this is a web application that uses a Dockerfile for configuration.    
+- `app.json`: Description of the app.    

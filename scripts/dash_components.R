@@ -3,12 +3,13 @@
 # title
 title <- htmlDiv(
   className = "pretty_container",
-  list(htmlH1('BEIJING PM2.5 (2010-2014)')),
+  list(htmlH1('BEIJING PM2.5 (2011-2014)')),
   style = list(
     'columnCount' = 1,
     'background-color' = '#8ECCD9',
     'text-align' = 'center',
-    'height'=75
+    'height'=85,
+    'font-family' = 'Impact, Charcoal, sans-serif'
   )
 )
 
@@ -66,7 +67,7 @@ yearChecklist <- dccChecklist(
   options=list(
     list("label" = "2011  ", "value" = "2011"),
     list("label" = "2012  ", "value" = "2012"),
-    list("label" = "2013  ", "value" = "2013"),
+    list("label" = "2013  ", "value" = "2013", disabled=TRUE),
     list("label" = "2014", "value" = "2014")
   ),
   value=list("2013")
@@ -77,7 +78,8 @@ div_checklist <- htmlDiv(
     htmlLabel('Please pick one or more years you are interested in to see the hourly PM2.5 concentration: '),
     yearChecklist
   ), style=list(
-    'padding'=20
+    'padding'=20,
+    color = '#4B5F5F'
   )
 )
 
@@ -108,10 +110,11 @@ year_slider <- dccRangeSlider(
 )
 
 div_slider <- htmlDiv(
+  className = "pretty_container",
   list(
     htmlLabel('Please pick a time range to see the changes of daily PM2.5 concentration: '),
     year_slider,
-    htmlDiv(id='time_range_hint')), style=list('padding'=20)
+    htmlDiv(id='time_range_hint')), style=list('padding'=20, color = '#4B5F5F')
 )
 
 ## Graph
@@ -134,7 +137,7 @@ factorRadio <- dccRadioItems(
     list(label=factor_xaxis$label[i], value=factor_xaxis$value[i])
   }),
   value = "TEMP",
-  labelStyle = list("display" = "block")
+  labelStyle = list("display" = "block", color = '#4B5F5F')
 )
 
 div_radio <- htmlDiv(
@@ -142,7 +145,7 @@ div_radio <- htmlDiv(
     htmlLabel('Please select a weather factor: '),
     factorRadio
   ), style=list(
-    'padding'=20
+    'padding'=20, color = '#4B5F5F'
   )
 )
 

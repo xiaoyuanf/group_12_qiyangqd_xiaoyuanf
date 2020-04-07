@@ -32,9 +32,14 @@ source(here("scripts/dash_components.R"))
 
 # layout
 app$layout(
-  title,
   htmlDiv(
-    className = "pretty_container",
+    title,
+    style = list(
+                 'margin-left' = 'auto',
+                 'margin-right' = 'auto',
+                 'width'='100%')),
+  htmlDiv(
+    #className = "pretty_container",
     list(
       intro,
       overview_header,
@@ -50,7 +55,7 @@ app$layout(
       ), style = list('display' = 'block',
                       'margin-left' = 'auto',
                       'margin-right' = 'auto',
-                      'width'='90%')
+                      'width'='95%')
 
           )
 )

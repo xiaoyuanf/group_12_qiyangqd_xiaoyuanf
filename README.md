@@ -6,9 +6,9 @@ Margot Chen, Qi Yang
 
 ## Links to our Dashboard and the Final Report
 Here are the links to:     
-1) [Dashboard]();    
+1) [Dashboard](https://margotchen-project.herokuapp.com/);    
 2) Final report (different versions): 
-[.html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport.html), [.pdf](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport.pdf) and [.md](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport.md).
+[.html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport/finalreport.html), [.pdf](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport/finalreport.pdf) and [.md](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport/finalreport.md).
 
 ## Introduction 
 1. Project Interest    
@@ -25,9 +25,9 @@ The links below lead to the releases/milestones and final reports. They will be 
 __Milestone 1:__ [release1.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/1.0)  [html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/miletone1/milestone1.html)        
 __Milestone 2:__ [release2.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/2.0)     
 __Milestone 3:__ [release3.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/3.0) [final report](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport.html)   
-__Milestone 4:__ [release4.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/4.0) 
+__Milestone 4:__ [release4.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/4.0)       
 __Milestone 5:__ [release5.1](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/5.1)  
-__Milestone 6:__   
+__Milestone 6:__ [release6.0](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/releases/tag/6.0)  
 
 ## Dashboard Proposal
 ### Description

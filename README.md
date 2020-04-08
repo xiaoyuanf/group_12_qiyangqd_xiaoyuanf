@@ -6,9 +6,9 @@ Margot Chen, Qi Yang
 
 ## Links to our Dashboard and the Final Report
 Here are the links to:     
-1) [Dashboard]();    
+1) [Dashboard](https://margotchen-project.herokuapp.com/);    
 2) Final report (different versions): 
-[.html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport.html), [.pdf](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport.pdf) and [.md](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport.md).
+[.html](https://stat547-ubc-2019-20.github.io/group_12_qiyangqd_xiaoyuanf/docs/finalreport/finalreport.html), [.pdf](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport/finalreport.pdf) and [.md](https://github.com/STAT547-UBC-2019-20/group_12_qiyangqd_xiaoyuanf/blob/master/docs/finalreport/finalreport.md).
 
 ## Introduction 
 1. Project Interest    

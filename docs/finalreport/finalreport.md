@@ -54,7 +54,11 @@ Below are the variables in the dataset:
 
 Our first step was to check if there are correlations between meteorological conditions and `PM2.5` concentration using a correllogram. The colors in the first row are very shallow and corresponding values are close to zero, indicating weak correlations between `PM2.5` concentration and meteorological conditions.
 
-![Figure 1.Correlation between PM2.5 concentration and dew point, temperature or pressure](../images/corr.png)     
+<div class="figure" style="text-align: center">
+<img src="/Users/chen/Desktop/graduate/STAT 547M/project/stat547_project/images/corr.png" alt="Figure 1.Correlation between PM2.5 concentration and dew point, temperature or pressure" width="75%" />
+<p class="caption">Figure 1.Correlation between PM2.5 concentration and dew point, temperature or pressure</p>
+</div>
+  
 
 ### 2.Faceted histogram	   
 
@@ -63,8 +67,10 @@ _Only northeast, southwest, southeast and calm and variable were recorded as the
 
 For different wind directions, the range of `PM2.5` concentration is similar, but the absolute and relative frequency of a specific `PM2.5` concentration are different: northwest and southeast tend to have more recordings of low values.
 
-![Figure 2. PM2.5 pollution for different wind directions](../images/facted_hist.png)      
-
+<div class="figure" style="text-align: center">
+<img src="/Users/chen/Desktop/graduate/STAT 547M/project/stat547_project/images/facted_hist.png" alt="Figure 2. PM2.5 pollution for different wind directions" width="75%" />
+<p class="caption">Figure 2. PM2.5 pollution for different wind directions</p>
+</div>
 
 ### 3.Heat map
 
@@ -72,7 +78,10 @@ For different wind directions, the range of `PM2.5` concentration is similar, bu
 
 In addition to meteorological conditions, we are curious about the correlation between `PM2.5` concentration and time, so we generated a heat map. No significant color differences were found between years (2013 and 2014) or within a day (morning, afternoon and evening). However, the color varies in different months: October to Februrary tend to have more dark colors compared to the other months.      
 
-![Figure 3. Hourly PM2.5 concentration in 2013 and 2014](../images/heatmap.png)     
+<div class="figure" style="text-align: center">
+<img src="/Users/chen/Desktop/graduate/STAT 547M/project/stat547_project/images/heatmap.png" alt="Figure 3. Hourly PM2.5 concentration in 2013 and 2014" width="75%" />
+<p class="caption">Figure 3. Hourly PM2.5 concentration in 2013 and 2014</p>
+</div>
 
 Inspired by the heat map, we generated two more figures of `PM2.5` concentration focusing on seasons and the trend across years.
 
@@ -80,13 +89,21 @@ Inspired by the heat map, we generated two more figures of `PM2.5` concentration
 
 The histogram emphasizes the severity of `PM2.5` pollution in different seasons. We can see clearly that with the time going from spring to winter, `PM2.5` concentration rises continously. 
 
-![Figure 4. PM2.5 pollution in different seasons](../images/season_PM2.5.png)      
+<div class="figure" style="text-align: center">
+<img src="/Users/chen/Desktop/graduate/STAT 547M/project/stat547_project/images/season_PM2.5.png" alt="Figure 4. PM2.5 pollution in different seasons" width="75%" />
+<p class="caption">Figure 4. PM2.5 pollution in different seasons</p>
+</div>
+
 
 ### 5.Line chart
 
 The purpose of the line chart was to show the change of `PM2.5` concentration across time. In general, the `PM2.5` concentration seems to fluctuate, and peaks usually take place when new years come. The blue dash line on the left of 2014 shows when the Chinese government launched a plan to fight against the pollution, but it is hard to observe a decrease in `PM2.5` concentration since this time. 
 
-![Figure 5. PM2.5 concentration across years](../images/year_PM2.5.png)
+<div class="figure" style="text-align: center">
+<img src="/Users/chen/Desktop/graduate/STAT 547M/project/stat547_project/images/year_PM2.5.png" alt="Figure 5. PM2.5 concentration across years" width="75%" />
+<p class="caption">Figure 5. PM2.5 concentration across years</p>
+</div>
+
 
 ## Analysis methods
 
@@ -113,7 +130,7 @@ tidy(lm)
 plot(lm)
 ```
 
-![](finalreport_files/figure-html/unnamed-chunk-4-1.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-2.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-3.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-4-4.png)<!-- -->
+![](finalreport_files/figure-html/unnamed-chunk-9-1.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-9-2.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-9-3.png)<!-- -->![](finalreport_files/figure-html/unnamed-chunk-9-4.png)<!-- -->
 
 Judging by the plots, we can tell that this model has huge residuals and cannot predict pm2.5 well.
 
